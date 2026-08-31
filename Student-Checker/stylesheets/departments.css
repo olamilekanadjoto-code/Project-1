@@ -1,0 +1,55 @@
+.deptBody {
+  background-color: #eee;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+.ots-logo {
+  width: clamp(150px, 25vw, 130px);
+  height: clamp(150px, 13vh, 130px);
+  align-self: center;
+  justify-self: center;
+}
+.main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  gap: 10px;
+}
+.main-header {
+  font-family: "Cal Sans";
+  letter-spacing: 1px;
+  color: #0407b3c0;
+  font-weight: 600;
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  align-self: center;
+}
+.main-description {
+  align-self: center;
+  width: 80%;
+  color: #333;
+  font-family: "Inter";
+  text-align: center;
+  font-size: clamp(1rem, 2vw, 2rem);
+}
+.dept-grid {
+  width: 70vw;
+  align-self: center;
+}
+.dept-box {
+  display: inline-block;
+  overflow: hidden;
+  background-color: cornsilk;
+}
+.slider-image {
+  display: flex;
+  transition: transform 0.8s ease-in-out;
+  position: relative;
+}
+.slider-image img {
+  flex: 0 0 100%;
+  object-fit: cover;
+  height: 20vh;
+}

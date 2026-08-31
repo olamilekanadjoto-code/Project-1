@@ -1,0 +1,236 @@
+* {
+  box-sizing: border-box;
+}
+.user-icon {
+  height: auto;
+}
+body {
+  background-color: #faf9fc;
+  overflow-x: hidden;
+}
+.home-Body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.top {
+  width: 90%;
+  align-self: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.left-header {
+  width: fit-content;
+  color: #4f7a6e;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: "Inter";
+}
+.right {
+  display: flex;
+  flex-direction: row;
+}
+.table-et-filter {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 4vw, 30px);
+  width: 100vw;
+}
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-family: "Nunito Sans";
+  text-align: center;
+  background-color: #4f7a6e;
+  color: #f1edf6;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+.student-table-wrapper {
+  background-color: #ebf3f1;
+  align-self: center;
+  box-shadow: 1px 1px 6px #000;
+  border-radius: 7px;
+  width: 85%;
+  overflow-x: scroll;
+  height: 60vh;
+}
+.student-table tbody {
+  padding-top: 15px;
+}
+.student-table th {
+  font-size: clamp(0.7rem, 2vw, 2.5rem);
+  font-weight: 450;
+  color: #4f7a6e;
+  text-align: left;
+  width: max-content;
+  white-space: nowrap;
+  text-transform: uppercase;
+  font-family: "Cal Sans";
+}
+.student-table td,
+.student-table th {
+  border-bottom: 2px solid #4f7a6e;
+  padding: 15px 10px;
+}
+.student-table td {
+  font-family: "Inter";
+}
+.student-table {
+  border-collapse: collapse;
+  width: auto;
+  table-layout: fixed;
+}
+.student-name {
+  display: flex;
+  flex-direction: row;
+  gap: 3px;
+  align-items: center;
+}
+.td,
+.dept-div {
+  font-weight: 300;
+  font-family: "Inter";
+  align-self: center;
+  justify-self: center;
+  font-size: clamp(0.8rem, 2vw, 1.8rem);
+}
+.name {
+  color: #333;
+  width: max-content;
+  font-family: "Inter";
+  font-size: clamp(0.9rem, 3vw, 3rem);
+}
+.dept-div {
+  white-space: nowrap;
+  width: max-content;
+}
+.filter-section {
+  width: 80%;
+  align-self: center;
+  display: flex;
+  flex-direction: row;
+}
+.select {
+  position: relative;
+  left: -10px;
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  width: 100%;
+  justify-self: left;
+  justify-content: center;
+}
+.select-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.select-box {
+  appearance: none;
+  border-color: #4f7a6e;
+  padding: 5px 15px;
+  background: none;
+  text-align: left;
+  border-radius: 5px;
+}
+.select-box:checked {
+  background-color: #4f7a6e;
+}
+.select-box option {
+  border: none;
+  padding: 8px 12px;
+  color: #333;
+}
+.select-box option:checked,
+.select-box option:hover {
+  background-color: #4f7a6e;
+  color: #fff;
+}
+.link {
+  text-decoration: none;
+}
+.add-btn {
+  padding: 10px 5px;
+  font-family: "Inter";
+  font-weight: 600;
+  display: flex;
+  text-decoration: none;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  border: none;
+  border-radius: 5px;
+  background-color: #4f7a6e;
+  color: #faf9fc;
+  height: clamp(15px, 6vh, 35px);
+  width: clamp(120px, 11vw, 160px);
+}
+.home-billboard {
+  align-items: center;
+  align-content: center;
+  justify-items: center;
+  justify-content: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background-color: #4f7a6e;
+}
+.home-billboard img {
+  width: clamp(100px, 20vw, 200px);
+  height: clamp(100px, 20vw, 200px);
+}
+.billboard-text {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: center;
+}
+.billboard-text h1 {
+  font-family: "Cal Sans";
+  letter-spacing: 1.5px;
+  color: #fceccc;
+}
+.billboard-text p {
+  color: #faf9fc;
+  text-align: center;
+  font-size: clamp(0.8rem, 2vw, 3rem);
+  width: 85%;
+  font-family: "Poppins";
+  align-content: center;
+}
+.billboard-pryText {
+  width: 85%;
+  align-content: center;
+  text-align: center;
+  font-family: "Poppins";
+  font-size: clamp(0.8rem, 2vw, 3rem);
+}
+.billboard-pryText p {
+  color: #000;
+}
+.billboard-pryText h5 {
+  color: #faf9fc;
+  font-weight: 400;
+  font-size: clamp(0.73rem, 2vw, 2rem);
+}
+
+/* Media Query */
+@media screen and (min-width: 375px) {
+  .select {
+    justify-self: left;
+  }
+}

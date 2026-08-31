@@ -1,0 +1,210 @@
+body {
+  width: 100vw;
+  height: 800px;
+  background-color: #f3f6fc;
+  overflow-x: hidden;
+}
+.feedback-component {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 10vh;
+  gap: 2vh;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 8vh;
+}
+.feedback-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+  width: 85%;
+  align-self: center;
+}
+.fi-header {
+  width: max-content;
+  font-family: "Poppins";
+  font-size: clamp(1.5rem, 5vw, 3rem);
+  padding-right: 15%;
+  padding-left: 5%;
+  padding-top: 4%;
+  padding-bottom: 4%;
+  border-left: 7px solid #f5c426;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  color: #19386e;
+  background-color: #ffffff;
+}
+.fi-description {
+  font-family: "Poppins";
+  font-weight: 400;
+  color: #182238;
+  font-size: clamp(0.9rem, 3vw, 3rem);
+}
+.form {
+  width: 85%;
+  height: auto;
+  padding-top: 5vh;
+  padding-left: 5vh;
+  padding-right: 5vh;
+  padding-bottom: 7vh;
+  align-self: center;
+  background-color: #ffffff;
+  border-radius: 6px;
+  box-shadow: 0px 0px 10px #fbf3dc;
+}
+.form-body {
+  display: grid;
+  height: fit-content;
+  grid-template-columns: repeat(1, 3fr);
+  gap: 10%;
+}
+.details {
+  border-radius: 2px;
+  width: clamp(60vw, 80%, 75vw);
+  height: clamp(5vh, 10vh, 6vh);
+}
+.text-area {
+  border-radius: 2px;
+  height: auto;
+}
+.details,
+.text-area {
+  outline: #19386e;
+  padding-left: 5%;
+  box-shadow: 0px 0px 5px #fbf3dc;
+  border-width: 1px;
+  border-style: solid;
+  background-color: #f8f6ee;
+  border-color: #b0beda;
+}
+.text-area:focus,
+.details:focus {
+  border: 1px solid #19386e;
+}
+.text-area::placeholder {
+  color: #000;
+  font-family: "Nunito Sans";
+  font-weight: 400;
+  padding-top: 1%;
+}
+.details::placeholder {
+  color: #000;
+  font-family: "Nunito Sans";
+  font-weight: 400;
+}
+.button {
+  border: none;
+  border-radius: 4px;
+  width: clamp(35%, 40vw, 40%);
+  height: 190%;
+  background-color: #19386e;
+  color: #ffffff;
+  font-family: "Poppins";
+  font-weight: 600;
+}
+.button:hover {
+  transition: 300ms ease;
+  background-color: #f5c426;
+  color: #19386e;
+  border: 1px solid #ffffffff;
+}
+
+@media screen and (min-width: 500px) {
+  .details {
+    padding-left: 3%;
+    width: clamp(45vw, 65%, 60vw);
+    height: clamp(6vh, 11vh, 7vh);
+  }
+  .text-area {
+    padding-left: 3%;
+    width: clamp(60vw, 80%, 75vw);
+  }
+  .button {
+    width: clamp(25%, 30vw, 30%);
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .text-area {
+    height: 20vh;
+  }
+  .form {
+    height: 65vh;
+  }
+  .button {
+    height: 230%;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .feedback-component {
+    width: 70%;
+    position: absolute;
+    top: 3vh;
+    left: 25%;
+  }
+  .fi-description {
+    font-size: clamp(0.9rem, 2.2vw, 2rem);
+  }
+  .text-area {
+    width: clamp(40vw, 60%, 55vw);
+  }
+  .details {
+    width: clamp(35vw, 55%, 50vw);
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .fi-description {
+    font-size: clamp(0.9rem, 2vw, 2rem);
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .feedback-component {
+    left: 20%;
+  }
+  .text-area {
+    border-radius: 4px;
+  }
+  .button {
+    width: clamp(15%, 20vw, 20%);
+  }
+  .fi-description {
+    width: 80%;
+    font-size: clamp(0.9rem, 1.5vw, 2rem);
+  }
+  .details::placeholder,
+  .text-area::placeholder {
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .details::placeholder,
+  .text-area::placeholder {
+    font-size: 1rem;
+  }
+  .button {
+    font-size: 1rem;
+  }
+}
+
+@media (orientation: portrait) {
+  body {
+    height: clamp(110vh, 3300px, 140vh);
+  }
+  .feedback-component {
+    top: 5vh;
+  }
+  .details {
+    height: 4vh;
+  }
+  .form {
+    height: 47vh;
+  }
+  .form-body {
+    height: 60%;
+  }
+}

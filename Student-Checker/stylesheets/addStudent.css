@@ -1,0 +1,174 @@
+body {
+  background-color: #f3f6fc;
+}
+.add-component {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 10vh;
+  gap: 2vh;
+  width: 100%;
+  box-sizing: border-box;
+}
+.add-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+  width: 85%;
+  align-self: center;
+}
+.ai-header {
+  width: max-content;
+  font-family: "Poppins";
+  font-size: clamp(1.5rem, 5vw, 3rem);
+  padding-right: 15%;
+  padding-left: 5%;
+  padding-top: 4%;
+  padding-bottom: 4%;
+  border-left: 7px solid #f5c426;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  color: #19386e;
+  background-color: #ffffff;
+}
+.userForm {
+  width: 85%;
+  align-self: center;
+  background-color: #ffffff;
+  height: auto;
+  padding-top: 3vh;
+  padding-bottom: 7vh;
+  padding-left: 3vh;
+  padding-right: 3vh;
+  display: grid;
+  grid-template-columns: repeat(1, 6fr);
+  gap: 3vh;
+  border-radius: 7px;
+  box-shadow: 0px 0px 10px #fbf3dc;
+}
+.userForm span {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  justify-content: left;
+}
+.label {
+  font-family: "Dm Sans";
+  font-size: clamp(0.9rem, 1.5vw, 2rem);
+  font-weight: 600;
+  color: #19386e;
+}
+.ac-input {
+  border-radius: 2px;
+  width: clamp(60vw, 80%, 75vw);
+  height: clamp(5vh, 10vh, 6vh);
+  border-width: 1px;
+  border-style: solid;
+  outline: #19386e;
+  padding-left: 3%;
+  background-color: #f8f6ee;
+  border-color: #b0beda;
+}
+.ac-input::placeholder {
+  color: #000000;
+}
+.gender-select,
+.lvl-select {
+  border-radius: 2px;
+  box-shadow: 0px 0px 5px #fbf3dc;
+  border-width: 1px;
+  border-style: solid;
+  outline: #19386e;
+  width: clamp(55vw, 75%, 65vw);
+  height: clamp(5vh, 10vh, 6vh);
+  background-color: #f8f6ee;
+  padding-left: 2%;
+  border-color: #b0beda;
+}
+.dept-select {
+  padding-left: 2%;
+  border-radius: 2px;
+  box-shadow: 0px 0px 5px #fbf3dc;
+  border-width: 1px;
+  border-style: solid;
+  outline: #19386e;
+  width: clamp(65vw, 85%, 75vw);
+  height: clamp(5vh, 10vh, 6vh);
+  background-color: #f8f6ee;
+  border-color: #b0beda;
+}
+.dept-select::placeholder,
+.lvl-select::placeholder,
+.gender-select::placeholder {
+  color: #000;
+  font-family: "Nunito Sans";
+  font-weight: 400;
+}
+.ac-btn {
+  border: none;
+  border-radius: 4px;
+  width: clamp(35%, 40vw, 40%);
+  height: 190%;
+  background-color: #19386e;
+  color: #ffffff;
+  font-family: "Poppins";
+  font-weight: 600;
+}
+.ac-btn:hover {
+  background-color: #f3f6fc;
+  color: #19386e;
+  cursor: pointer;
+}
+
+@media (orientation: landscape) {
+  .ac-btn {
+    height: 220%;
+  }
+}
+
+@media screen and (min-width: 650px) {
+  .ac-input {
+    width: clamp(45vw, 65%, 60vw);
+  }
+  .gender-select,
+  .lvl-select,
+  .dept-select {
+    width: clamp(45vw, 65%, 55vw);
+  }
+  .ac-btn {
+    width: clamp(25%, 30vw, 30%);
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .add-component {
+    width: 70%;
+    left: 25%;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .ac-input {
+    width: clamp(35vw, 55%, 50vw);
+  }
+  .gender-select,
+  .lvl-select,
+  .dept-select {
+    width: clamp(35vw, 55%, 45vw);
+  }
+  .ac-btn {
+    width: clamp(25%, 30vw, 30%);
+  }
+}
+
+@media (orientation: portrait) {
+  .ac-input,
+  .gender-select,
+  .lvl-select,
+  .dept-select {
+    height: clamp(4vh, 8vh, 5vh);
+  }
+  .ac-btn {
+    width: clamp(40%, 45vw, 45%);
+  }
+}
