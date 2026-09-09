@@ -20,7 +20,7 @@ const sendFeedback = async (req, res) => {
     await feedback.save();
 
     await transporter.sendMail({
-      from: email,
+      from: `"Kestrel College" <${process.env.ORG_EMAIL}>`,
       to: process.env.EMAIL_USER,
       subject: `New Feedback ${sender}`,
       text: `From ${sender} (${email})\n\nMessage:\n${message}`,
@@ -28,7 +28,7 @@ const sendFeedback = async (req, res) => {
 
     res.status(200).json({ message: "Feedback sent successfully" });
   } catch (err) {
-    console.err(err.message);
+    console.error(err.message);
     res.status(500).json({ message: "Server error at feedback controller" });
   }
 };

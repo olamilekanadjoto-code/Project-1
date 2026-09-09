@@ -16,7 +16,7 @@ function WelcomePage() {
                 <span className="headerTexts">
                     <h3>Welcome To</h3> <p>OUR SCHOOL APP</p>
                 </span>
-                <svg fill="#8B63BF" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"
+                <svg fill="#0c1d3b" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"
                     width="800px" height="800px" viewBox="0 0 484.006 484.006"
                     xmlSpace="preserve" className="welcome-hat">
                     <g>

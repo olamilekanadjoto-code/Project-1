@@ -16,6 +16,6 @@ router.get("/filter", filterStudents);
 router.put("/:id", updateStudent);
 router.get("/search", searchStudents);
 router.delete("/:id", deleteStudent);
-router.post("feedback", sendFeedback);
+router.post("/feedback", sendFeedback);
 
 module.exports = router;

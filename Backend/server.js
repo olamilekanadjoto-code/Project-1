@@ -16,6 +16,6 @@ mongoose
 const routes = require("./routes/mainRoutes");
 app.use("/students", routes);
 
-app.listen(port, () => {
+app.listen(process.env.PORT, () => {
   console.log(`Server is running on port ${port}`);
 });

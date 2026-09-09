@@ -113,6 +113,7 @@ body {
   color: #ffffff;
   font-family: "Poppins";
   font-weight: 600;
+  transition: 300ms ease;
 }
 .ac-btn:hover {
   background-color: #f3f6fc;

@@ -20,7 +20,7 @@
   align-self: center;
   opacity: 0.3;
   transform-origin: top center;
-  animation: bellRing 3s ease-in-out 5;
+  animation: bellRing 3s ease-in-out infinite;
 }
 .start-btn {
   height: clamp(48px, 9vh, 64px);
@@ -28,16 +28,16 @@
   font-family: "Poppins";
   border-radius: 4px;
   transform: translate(0px, -15px);
-  background-color: #7b2cbc;
+  background-color: #0c1d3b;
   color: #fff;
   border: none;
 }
 .start-btn:hover {
   transition: 300ms ease;
   cursor: pointer;
-  color: #7b2cbc;
+  color: #0c1d3b;
   background-color: #fff;
-  border: 1px solid #7b2cbc;
+  border: 1px solid #0c1d3b;
 }
 .headerTexts {
   transform: translate(-15px, 20px);
@@ -57,14 +57,14 @@
   font-family: "Cal Sans";
   transform: translateY(6px);
   font-weight: lighter;
-  color: #2b065996;
+  color: #0c1d3b;
   font-size: clamp(1.1rem, 3vw, 2rem);
 }
 .headerTexts p {
   font-family: "Cal Sans";
   font-weight: 470;
   font-size: clamp(1.7rem, 8vw, 5rem);
-  background: linear-gradient(90deg, #7b2cbc, #9b9ac1);
+  background: linear-gradient(90deg, #0d4097, #9b9ac1);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -73,7 +73,7 @@
   width: clamp(60%, 70vw, 80%);
   text-align: center;
   font-size: clamp(0.85rem, 3vw, 1.8rem);
-  color: #2b065996;
+  color: #293141;
   font-family: "Poppins";
 }
 
