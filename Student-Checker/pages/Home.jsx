@@ -23,7 +23,9 @@ function Home() {
     setLoading(false);
     const AllStudents = async () => {
       try {
-        const res = await axios.get(`http://localhost:2468/students/home`);
+        const res = await axios.get(
+          `https://project-1-j62j.onrender.com/students/home`,
+        );
         setStudents(res.data);
       } catch (err) {
         console.error(err.message);
@@ -39,9 +41,12 @@ function Home() {
       const params = {};
       if (department) params.department = department;
       if (level) params.level = level;
-      const res = await axios.get(`http://localhost:2468/students/filter`, {
-        params,
-      });
+      const res = await axios.get(
+        `https://project-1-j62j.onrender.com/students/filter`,
+        {
+          params,
+        },
+      );
       setStudents(res.data);
       setCurrentPage(1); // reset to page 1 whenever filters change
       if (res.data.length === 0) {
@@ -66,7 +71,7 @@ function Home() {
 
   const deleteStudent = async (id) => {
     try {
-      await axios.delete(`http://localhost:2468/students/${id}`);
+      await axios.delete(`https://project-1-j62j.onrender.com/students/${id}`);
       setStudents((prev) => prev.filter((student) => student._id !== id));
     } catch (err) {
       console.log(err.message);

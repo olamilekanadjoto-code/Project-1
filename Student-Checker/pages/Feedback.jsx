@@ -16,11 +16,14 @@ function Feedback() {
   const sendFeedback = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`http://localhost:2468/students/feedback`, {
-        sender,
-        email,
-        message,
-      });
+      const res = await axios.post(
+        `https://project-1-j62j.onrender.com/students/feedback`,
+        {
+          sender,
+          email,
+          message,
+        },
+      );
 
       console.log(res.data);
       setPopUp(true);
