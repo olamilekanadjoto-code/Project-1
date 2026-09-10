@@ -67,9 +67,9 @@ function Navbar() {
             <Link to="/about">
               <button className="linkButton">About Us</button>
             </Link>
-            <Link to="/feedback-report">
+            {/* <Link to="/feedback-report">
               <button className="linkButton">Feedback</button>
-            </Link>
+            </Link> */}
             <Link to="/add-student">
               <button className="linkButton">Add Student</button>
             </Link>
