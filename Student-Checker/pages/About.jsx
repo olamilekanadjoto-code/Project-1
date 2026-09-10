@@ -4,17 +4,14 @@ import "@fontsource/inter";
 import "@fontsource/roboto";
 import "@fontsource/cal-sans";
 import "@fontsource/nunito-sans";
+import logo from "../src/assets/kestrel-college-crest.svg";
 
 function About() {
   return (
     <>
       <div className="about-component">
         <div className="ac-intro">
-          <img
-            className="ai-logo"
-            src="../src/assets/kestrel-college-crest.svg"
-            alt="ots-logo"
-          />
+          <img className="ai-logo" src={logo} alt="ots-logo" />
           <span className="ai-text-wrapper">
             <h4 className="ai-text-header">ABOUT THE INSTITUTION</h4>
             <h3 className="ai-text-name">Kestrel College</h3>

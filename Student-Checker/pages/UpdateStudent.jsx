@@ -27,8 +27,6 @@ function UpdateStudent() {
         { age, level },
       );
       console.log(res.data);
-
-      navigate("/student-profile");
     } catch (err) {
       console.error(err.message);
     }

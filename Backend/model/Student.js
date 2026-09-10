@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema({
   },
   level: {
     type: String,
-    enum: [100, 200, 300, 400, 500],
+    enum: ["100", "200", "300", "400", "500"],
     default: "All Levels",
   },
 });

@@ -5,11 +5,11 @@ const createStudent = async (req, res) => {
   try {
     const { name, matric_no, age, gender, department, level } = req.body;
     if (!name) {
-      res.status(400).json("Name field is required");
+      return res.status(400).json("Name field is required");
       console.log("Name is required");
     }
     if (!matric_no) {
-      res.status(400).json("Matric number field is required");
+      return res.status(400).json("Matric number field is required");
       console.log("Matric number is required");
     }
 
@@ -43,7 +43,7 @@ const createStudent = async (req, res) => {
 const getStudents = async (req, res) => {
   try {
     const students = await Student.find();
-    if (!students) return res.status(404).json("Students not found");
+    if (students) return res.status(404).json("Students not found");
 
     res.status(200).json(students);
   } catch (err) {

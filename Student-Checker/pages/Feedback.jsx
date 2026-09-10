@@ -32,8 +32,6 @@ function Feedback() {
       setSender("");
     } catch (err) {
       console.error(err.message);
-    } finally {
-      setPopUp(false);
     }
   };
   return (
