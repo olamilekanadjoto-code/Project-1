@@ -44,7 +44,7 @@ const getStudents = async (req, res) => {
   try {
     const students = await Student.find();
     console.log("students found:", students.length, students);
-    if (students) return res.status(404).json("Students not found");
+    // if (students) return res.status(404).json("Students not found");
 
     res.status(200).json(students);
   } catch (err) {
