@@ -41,7 +41,7 @@ function AddStudent() {
       setError(err.message);
     }
   };
-  if (error) return <p>{error}</p>;
+  // if (error) return <p>{error}</p>;
 
   return (
     <>
