@@ -11,7 +11,6 @@ function Feedback() {
   const [sender, setSender] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [popUp, setPopUp] = useState(false);
 
   const sendFeedback = async (e) => {
     e.preventDefault();
@@ -26,7 +25,6 @@ function Feedback() {
       );
 
       console.log(res.data);
-      setPopUp(true);
       setEmail("");
       setMessage("");
       setSender("");
@@ -45,7 +43,7 @@ function Feedback() {
           </h3>
         </div>
         <div className="form">
-          <form action="" className="form-body" onSubmit={sendFeedback}>
+          <form className="form-body" onSubmit={sendFeedback}>
             <input
               className="details"
               type="text"

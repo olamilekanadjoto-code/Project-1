@@ -2,7 +2,6 @@ const Feedback = require("../model/Feedback");
 const nodemailer = require("nodemailer");
 
 const transporter = nodemailer.createTransport({
-  service: "gmail",
   host: "smtp.gmail.com",
   port: 465,
   secure: true,
@@ -11,6 +10,8 @@ const transporter = nodemailer.createTransport({
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
   },
+  lookup: (hostname, options, callback) =>
+    dns.lookup(hostname, { family: 4 }, callback),
 });
 
 const sendFeedback = async (req, res) => {
