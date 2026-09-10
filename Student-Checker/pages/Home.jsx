@@ -154,8 +154,8 @@ function Home() {
                   value={level}
                   onChange={(e) => {
                     setLevel(e.target.value);
-                    Filter();
                   }}
+                  onClick={Filter}
                 >
                   <option value="">All Levels</option>
                   <option value="100">100</option>
@@ -173,8 +173,8 @@ function Home() {
                   value={department}
                   onChange={(e) => {
                     setDept(e.target.value);
-                    Filter();
                   }}
+                  onClick={Filter}
                 >
                   <option value="">All Departments</option>
                   <option value="Medical Sciences">Medical Sciences</option>
