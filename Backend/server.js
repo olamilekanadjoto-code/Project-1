@@ -1,4 +1,6 @@
 require("dotenv").config();
+const dns = require("dns");
+dns.setDefaultResultOrder("ipv4first"); // add this near your other requires
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();

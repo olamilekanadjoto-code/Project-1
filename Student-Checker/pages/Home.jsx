@@ -110,8 +110,6 @@ function Home() {
     setCurrentPage(page);
   };
 
-  if (error) return <p>{error}</p>;
-
   return (
     <>
       <div className="home-Body">
@@ -223,6 +221,12 @@ function Home() {
                   <tr>
                     <td colSpan="7" className="no-students">
                       {filterMessage}
+                    </td>
+                  </tr>
+                ) : paginatedStudents.length === 0 ? (
+                  <tr>
+                    <td colSpan="7" className="no-students">
+                      No students yet — add your first one!
                     </td>
                   </tr>
                 ) : (
