@@ -14,12 +14,10 @@ const userSchema = new mongoose.Schema({
       "Commercial Studies",
       "Languages and Linguistics",
     ],
-    default: "All Departments",
   },
   level: {
     type: String,
     enum: ["100", "200", "300", "400", "500"],
-    default: "All Levels",
   },
 });
 
