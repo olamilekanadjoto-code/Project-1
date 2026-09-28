@@ -8,7 +8,7 @@
   gap: clamp(50px, 15vw, 70px);
   flex-direction: column;
   width: 100%;
-  padding-top: 10%;
+  padding-top: 5%;
   min-height: 100vh;
   box-sizing: border-box;
   align-items: center;
