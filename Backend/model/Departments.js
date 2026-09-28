@@ -18,7 +18,7 @@ const DEPARTMENTS = [
   {
     Id: "LAH",
     code: "L. A. H.",
-    name: "Law And Humanities",
+    name: "Law and Humanities",
     subtitle: "Justice, ethics & the human record",
     description:
       "Legal reasoning, philosophy, and history taught through primary texts, moot court, and closely argued seminars.",
@@ -34,7 +34,7 @@ const DEPARTMENTS = [
   {
     Id: "LAL",
     code: "L. A. L",
-    name: "Languages And Linguistics",
+    name: "Languages and Linguistics",
     subtitle: "Language, meaning & communication",
     description:
       "Comparative and applied linguistics alongside fluency tracks in modern languages, with a required study-abroad term.",

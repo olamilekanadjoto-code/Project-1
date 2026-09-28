@@ -222,7 +222,7 @@ function Home() {
                   <option value="Law and Humanities">Law and Humanities</option>
                   <option value="Applied Sciences">Applied Sciences</option>
                   <option value="Commercial Studies">Commercial Studies</option>
-                  <option value="Languages & Linguistics">
+                  <option value="Languages and Linguistics">
                     Languages & Linguistics
                   </option>
                 </select>
