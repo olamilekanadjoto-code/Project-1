@@ -35,7 +35,7 @@ const markAttendance = async (req, res) => {
             status: r.status,
             date: day,
           },
-          { upsert: true, new: true, setDefaultsOnInsert: true },
+          { upsert: true, returnDocument: true, setDefaultsOnInsert: true },
         ),
       ),
     );

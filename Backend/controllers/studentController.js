@@ -101,10 +101,14 @@ const updateStudent = async (req, res) => {
     const { id } = req.params;
     const { age, level } = req.body;
 
-    const student = await Student.findByIdAndUpdate(id, {
-      age,
-      level,
-    });
+    const student = await Student.findByIdAndUpdate(
+      id,
+      {
+        age,
+        level,
+      },
+      { returnDocument: "after" },
+    );
     res.status(201).json(student);
   } catch (err) {
     console.error(err.message);
