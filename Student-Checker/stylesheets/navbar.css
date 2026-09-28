@@ -1,149 +1,159 @@
-.body {
-  width: 50%;
-  height: auto;
+.body,
+.closedbody {
+  width: 78%;
+  max-width: 320px;
+  height: 100vh;
   margin: 0;
   padding: 0;
-  background-color: #0c1d3b;
-  transition:
-    opacity 0.7s ease-in-out,
-    transform 0.2s linear 0.3s;
-  transform: translateX(0%);
+  background-color: var(--dark);
   z-index: 9999;
   position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.35);
+}
+.body {
+  transition:
+    opacity 0.7s ease-in-out,
+    transform 0.2s linear 0.3s;
+  transform: translateX(0%);
   animation: navSlide 0.3s ease;
 }
 .closedbody {
-  width: 50%;
-  height: auto;
-  margin: 0;
-  padding: 0;
-  background-color: #0c1d3b;
   transition:
     opacity 0.1s ease-in-out,
     transform 0s linear 0s;
   transform: translateX(-200%);
   position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
 }
 a {
   height: fit-content;
+  text-decoration: none;
 }
 .navBody {
-  height: 500px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   position: relative;
   gap: 3vh;
-  top: 2vh;
+  padding: 4vh 0 3vh;
+  box-sizing: border-box;
 }
 .logo-et-header {
   height: fit-content;
   width: fit-content;
   display: flex;
-  flex-direction: row;
-  gap: 20px;
+  flex-direction: row-reverse;
+  gap: 14px;
   align-self: center;
   align-items: center;
   justify-content: center;
+  padding-bottom: 2vh;
+  border-bottom: 1px solid var(--dark-border);
+  width: 82%;
 }
 .header {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   font-family: "Cal Sans";
   font-weight: 600;
-  color: #C9A227;
-  letter-spacing: 1.5px;
+  color: var(--gold);
+  letter-spacing: 2px;
 }
 .header:hover {
   cursor: default;
 }
 img {
-  width: clamp(30px, 17vw, 60px);
-  height: clamp(30px, 10vh, 70px);
+  width: clamp(30px, 14vw, 44px);
+  height: clamp(30px, 8vh, 44px);
+  border-radius: 10px;
+  background: var(--white);
+  padding: 3px;
 }
 .navBar {
-  height: 60%;
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  justify-content: space-evenly;
+  height: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 1vh 9% 0;
 }
 .linkButton {
   background: none;
   border: none;
-  color: #ffffff;
+  color: var(--dark-text-muted);
   text-align: left;
-  font-size: clamp(0.8rem, 3.7vw, 3rem);
-  width: 90%;
-  height: 5vh;
-  margin-left: 3%;
-  padding-left: 5%;
+  display: flex;
+  align-items: center;
+  font-size: clamp(0.85rem, 3.5vw, 1.05rem);
+  width: 100%;
+  height: 6vh;
+  min-height: 42px;
+  padding-left: 6%;
   font-family: "Inter";
   font-weight: 550;
+  border-radius: 10px;
+  cursor: pointer;
 }
 .navBar span {
-  margin-left: 3%;
   position: relative;
-  top: 4vh;
+  margin-top: 2vh;
   display: flex;
+  width: min-content;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
   text-align: center;
   font-family: "Inter";
   font-size: clamp(0.8rem, 2vw, 1rem);
-  color: #ffffff;
+  color: var(--white);
 }
 .linkButton:hover {
-  background-color: #ffffff;
-  color: #293141;
-  transition: 300ms ease;
-  border-radius: 6px;
+  background-color: var(--blue);
+  color: var(--white);
+  transition: 200ms ease;
 }
 .linkButton:active {
-  background-color: #ffffff;
-  color: #293141;
-  border-radius: 6px;
+  background-color: var(--blue-dark);
+  color: var(--white);
 }
 #arrow {
-  transform: rotate(-90deg);
-  margin-left: 7%;
-  align-self: center;
+  cursor: pointer;
   width: clamp(10px, 10vw, 25px);
   height: auto;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 6px;
+}
+.hamburger-hidden {
+  display: none;
 }
 #bar {
-  position: absolute;
-  top: 1vh;
-  left: 1vh;
-  border-radius: 5px;
-  padding: 2px 2px;
-  width: clamp(10px, 10vw, 30px);
-  background-color: #0c1d3b;
+  position: fixed;
+  top: 2vh;
+  left: 2vh;
+  z-index: 9998;
+  border-radius: 8px;
+  padding: 6px;
+  width: clamp(20px, 10vw, 34px);
+  background-color: var(--blue);
+  box-shadow: var(--shadow-soft);
 }
 
 @media screen and (min-width: 426px) {
-  .body {
-    width: 35%;
+  .body,
+  .closedbody {
+    width: 45%;
   }
   .linkButton {
-    font-size: clamp(0.8rem, 2.5vw, 2rem);
-    height: 8vh;
-  }
-  .logo-et-header {
-    position: relative;
-    top: 2vh;
-  }
-  .navBar {
-    position: relative;
-    top: 5vh;
+    font-size: clamp(0.85rem, 2.5vw, 1.4rem);
+    height: 7vh;
   }
 }
 
 @media screen and (min-width: 800px) {
-  .body {
+  .body,
+  .closedbody {
     width: 25%;
     height: 100vh;
     transition:
@@ -151,74 +161,29 @@ img {
       transform 0.4s linear 0.3s;
   }
   .linkButton {
-    font-size: clamp(0.8rem, 2vw, 2rem);
+    font-size: clamp(0.8rem, 1.3vw, 1.05rem);
   }
   #arrow {
+    visibility: hidden;
+  }
+  #bar {
     visibility: hidden;
   }
 }
 
 @media screen and (min-width: 1000px) {
   .navBar {
-    gap: 5vh;
-  }
-  .linkButton {
-    font-size: clamp(0.8rem, 1.5vw, 1.5rem);
+    gap: 6px;
   }
 }
 
 @media screen and (min-width: 1400px) {
-  .body {
+  .body,
+  .closedbody {
     width: 20%;
   }
   .header {
-    font-size: 2rem;
-  }
-  .navBar {
-    gap: 3vh;
-  }
-  .logo-et-header {
-    gap: 2vw;
-  }
-}
-
-@media screen and (min-width: 1600px) {
-  .linkButton {
-    font-size: clamp(0.8rem, 1.2vw, 1.5rem);
-  }
-}
-
-@media screen and (min-width: 2200px) {
-  .navBar {
-    gap: 6vh;
-  }
-}
-
-@media (orientation: portrait) {
-  .navBody {
-    height: 60%;
-    gap: 0;
-    top: 0;
-  }
-  .navBar {
-    height: 30%;
-  }
-  .linkButton {
-    height: 5vh;
-  }
-  img {
-    width: clamp(30px, 20vw, 60px);
-    height: clamp(20px, 9vh, 60px);
-  }
-}
-
-@media screen and (min-width: 320px) and (max-width: 562px) {
-  .navBody {
-    gap: 5vh;
-    top: 2vh;
-  }
-  .navBar {
-    height: 80%;
+    font-size: 1.6rem;
   }
 }
 

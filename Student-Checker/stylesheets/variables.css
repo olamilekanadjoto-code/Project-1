@@ -1,0 +1,73 @@
+/* ==========================================================================
+   Kestrel College — Design Tokens
+   Institutional navy + gold on white/off-white, red reserved for
+   destructive/error states. (Reverted from the blue/black dashboard skin
+   back to the original campus identity.)
+   ========================================================================== */
+:root {
+  /* Brand navy (primary) */
+  --navy-900: #0c1d3b;
+  --navy-800: #132a52;
+  --navy-700: #19386e;
+  --navy-600: #1e2761;
+
+  /* Accent gold */
+  --gold: #c9a227;
+  --gold-bright: #f5c426;
+  --gold-dark: #b8860b;
+
+  /* Neutrals / surfaces */
+  --bg: #f3f6fc;
+  --bg-alt: #faf9fc;
+  --white: #ffffff;
+  --cream: #f8f6ee;
+  --cream-light: #fbf3dc;
+  --blue-pale: #e9effa;
+  --blue-pale-2: #f3f6fc;
+  --blue-muted: #b0beda;
+  --border: #dde3ee;
+  --border-strong: #c8ccd3;
+  --border-muted: #c8ccd3;
+
+  /* Text */
+  --ink: #182238;
+  --text: #333333;
+  --text-muted: #5b6a85;
+  --text-soft: #7c8aa5;
+
+  /* Status */
+  --danger: #b3261e;
+  --danger-bg: #f3d9d9;
+  --success: var(--navy-700);
+  --amber: var(--gold-dark);
+
+  /* Sidebar (dark navy, not black) */
+  --dark: var(--navy-900);
+  --dark-2: var(--navy-800);
+  --dark-border: rgba(255, 255, 255, 0.1);
+  --dark-text-muted: rgba(255, 255, 255, 0.72);
+
+  /* Primary accent — mapped to navy so every component file (written
+     against --blue/--blue-dark/--blue-light) renders in navy again */
+  --blue: var(--navy-700);
+  --blue-dark: var(--navy-800);
+  --blue-light: #2f5fce;
+
+  /* Rarely-used accents (kept, not expanded) */
+  --sage: #4f7a6e;
+  --accent-blue: #2f5fce;
+  --purple-muted: #9b9ac1;
+
+  /* Spacing / shape */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --shadow-soft: 0 2px 10px rgba(12, 29, 59, 0.08);
+  --shadow-card: 0 2px 10px rgba(12, 29, 59, 0.06);
+  --shadow-pop: 0 20px 48px rgba(12, 29, 59, 0.28);
+
+  /* Type */
+  --font-display: "Cal Sans", serif;
+  --font-body: "Inter", sans-serif;
+  --font-accent: "Poppins", sans-serif;
+}

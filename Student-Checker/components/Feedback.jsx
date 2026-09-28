@@ -24,7 +24,6 @@ function Feedback() {
         },
       );
 
-      console.log(res.data);
       setEmail("");
       setMessage("");
       setSender("");
@@ -35,11 +34,18 @@ function Feedback() {
   return (
     <>
       <div className="feedback-component">
+        <h4
+          className="back-link"
+          style={{ position: "relative", left: "4%" }}
+          onClick={() => navigate(-1)}
+        >
+          ◀ Go back
+        </h4>
         <div className="feedback-intro">
           <h1 className="fi-header">Feedback Page</h1>
           <h3 className="fi-description">
             This is our feedback page, feel free to report back to us what you
-            feel about our operations here at OTS Academy.
+            feel about our operations here at Kestrel College.
           </h3>
         </div>
         <div className="form">

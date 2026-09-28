@@ -1,0 +1,175 @@
+.attendance-component {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 10vh;
+  gap: 2.2vh;
+  width: 100%;
+  box-sizing: border-box;
+  padding-bottom: 10vh;
+}
+.attendance-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+  width: 85%;
+  align-self: center;
+}
+.ai-header {
+  width: max-content;
+  font-family: "Poppins";
+  font-size: clamp(1.4rem, 4vw, 2.1rem);
+  padding: 1rem 3rem 1rem 1.5rem;
+  border-left: 7px solid var(--gold-bright);
+  border-top-right-radius: var(--radius-md);
+  border-bottom-right-radius: var(--radius-md);
+  color: var(--navy-700);
+  background-color: var(--white);
+  box-shadow: var(--shadow-card);
+}
+.attendance-filters {
+  width: 85%;
+  align-self: center;
+  background-color: var(--white);
+  padding: 2.5vh 2vh;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 2.2vh;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border);
+}
+.attendance-filters span {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.label {
+  font-family: "Dm Sans";
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.dept-select,
+.lvl-select {
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-strong);
+  background-color: var(--bg-alt);
+  color: var(--ink);
+  font-family: "Dm Sans";
+  height: 44px;
+}
+.ac-btn {
+  background-color: var(--blue);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 0 20px;
+  height: 44px;
+  font-family: "Dm Sans";
+  font-weight: 600;
+  cursor: pointer;
+}
+.ac-btn:hover {
+  background-color: var(--blue-dark);
+}
+.attendance-message {
+  width: 85%;
+  align-self: center;
+  color: var(--success);
+  font-family: "Inter";
+  font-weight: 600;
+}
+.attendance-error {
+  width: 85%;
+  align-self: center;
+  color: var(--danger);
+  font-family: "Inter";
+}
+.attendance-loading,
+.attendance-empty {
+  width: 85%;
+  align-self: center;
+  color: var(--text-muted);
+  font-family: "Inter";
+}
+.attendance-list {
+  width: 85%;
+  align-self: center;
+  background-color: var(--white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border);
+  padding: 2.5vh 2vh;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2vh;
+}
+.attendance-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5vh 4px;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.attendance-name {
+  font-family: "Dm Sans";
+  color: var(--ink);
+  font-weight: 600;
+}
+.attendance-matric {
+  font-weight: 400;
+  color: var(--text-soft);
+}
+.attendance-buttons {
+  display: flex;
+  gap: 8px;
+}
+.status-btn {
+  border: 1px solid var(--border-strong);
+  background-color: var(--white);
+  color: var(--text-muted);
+  border-radius: 999px;
+  padding: 6px 16px;
+  font-family: "Dm Sans";
+  font-size: 0.85rem;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+.status-btn.active.status-present {
+  background-color: var(--success);
+  border-color: var(--success);
+  color: var(--white);
+}
+.status-btn.active.status-late {
+  background-color: var(--amber);
+  border-color: var(--amber);
+  color: var(--white);
+}
+.status-btn.active.status-absent {
+  background-color: var(--danger);
+  border-color: var(--danger);
+  color: var(--white);
+}
+.save-btn {
+  align-self: flex-end;
+  margin-top: 1vh;
+}
+
+@media screen and (min-width: 800px) {
+  .attendance-component {
+    width: 70%;
+    position: relative;
+    left: 25%;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .attendance-component {
+    left: 20%;
+  }
+}

@@ -1,39 +1,42 @@
 const Student = require("../model/Student");
 const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
+const { generateUniqueMatricNo } = require("../utils/generateMatricNo");
 
 const createStudent = async (req, res) => {
   try {
-    const { name, matric_no, age, gender, department, level } = req.body;
+    const { name, email, password, age, gender, department, level } = req.body;
     if (!name) {
       return res.status(400).json("Name field is required");
       console.log("Name is required");
     }
-    if (!matric_no) {
-      return res.status(400).json("Matric number field is required");
-      console.log("Matric number is required");
+    if (!email) {
+      console.log("Email is required");
+      return res.status(400).json("Email field is required");
     }
+    if (!password) {
+      console.log("Password is required");
+      return res.status(400).json("Password field is required");
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const matricNo = await generateUniqueMatricNo(Student);
 
     const student = new Student({
       name,
-      matric_no,
+      email,
+      password: hashedPassword,
       age,
       gender,
       department,
       level,
+      matricNo,
     });
-    const token = jwt.sign(
-      {
-        id: student._id,
-        matric: student.matric_no,
-      },
-      process.env.SECRET_KEY,
-      {
-        expiresIn: "30d",
-      },
-    );
     await student.save();
+    console.log(matricNo);
 
-    res.status(200).json(token);
+    res.status(200).json("Student Profile Created");
   } catch (err) {
     console.log(err.message);
     res.status(500).json("Server error occured while creating student profile");
@@ -43,13 +46,53 @@ const createStudent = async (req, res) => {
 const getStudents = async (req, res) => {
   try {
     const students = await Student.find();
-    console.log("students found:", students.length, students);
     // if (students) return res.status(404).json("Students not found");
 
     res.status(200).json(students);
   } catch (err) {
     console.log(err.message);
     res.status(500).json("Server error while trying to get users");
+  }
+};
+
+const getStudentById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const student = await Student.findById(id);
+    if (!student) return res.status(404).json({ message: "Student not found" });
+
+    res.status(200).json(student);
+  } catch (err) {
+    console.error(err.message);
+    return res
+      .status(500)
+      .json({ message: "Error while fetching student by id" });
+  }
+};
+
+const loginStudent = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const student = await Student.findOne({ email });
+    if (!student) return res.status(404).json({ message: "Student not found" });
+
+    const comparePassword = await bcrypt.compare(password, student.password);
+    if (!comparePassword) return res.status(400).json("Incorrect Password");
+
+    const token = jwt.sign(
+      {
+        id: student._id,
+        age: student.age,
+      },
+      process.env.SECRET_KEY,
+      {
+        expiresIn: "30d",
+      },
+    );
+
+    res.status(200).json(token);
+  } catch (err) {
+    console.error(err.message);
   }
 };
 
@@ -105,10 +148,24 @@ const filterStudents = async (req, res) => {
   }
 };
 
+const studentConfirmation = async (req, res) => {
+  try {
+    const { matricNo } = req.body;
+    const student = await Student.findOne({ matricNo });
+
+    if (!student)
+      return res.status(404).json({ message: "MatricNo is incorrect" });
+
+    res.status(200).json(student);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ message: "Delete confirmation failed" });
+  }
+};
+
 const deleteStudent = async (req, res) => {
   try {
     const { id } = req.params;
-
     await Student.findByIdAndDelete(id);
 
     res.status(200).json({ message: "Student deleted successfully" });
@@ -121,8 +178,11 @@ const deleteStudent = async (req, res) => {
 module.exports = {
   createStudent,
   getStudents,
+  getStudentById,
   updateStudent,
   searchStudents,
   deleteStudent,
   filterStudents,
+  loginStudent,
+  studentConfirmation,
 };

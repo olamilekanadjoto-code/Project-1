@@ -2,7 +2,8 @@ const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  matric_no: { type: String, required: true, unique: true },
+  email: { type: String, required: true },
+  password: { type: String, required: true, unique: true },
   gender: String,
   age: Number,
   department: {
@@ -18,6 +19,11 @@ const userSchema = new mongoose.Schema({
   level: {
     type: String,
     enum: ["100", "200", "300", "400", "500"],
+  },
+  matricNo: {
+    type: String,
+    required: true,
+    unique: true,
   },
 });
 

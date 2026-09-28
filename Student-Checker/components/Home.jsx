@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import "../stylesheets/home.css";
 import "@fontsource/cal-sans";
 import "@fontsource/nunito-sans";
 import "@fontsource/inter";
 import "@fontsource/poppins";
 import logo from "../src/assets/kestrel-college-crest.svg";
+import LoginComponent from "./Login";
 
 function Home() {
+  const navigate = useNavigate();
   const [students, setStudents] = useState([]);
   const [department, setDept] = useState("");
   const [level, setLevel] = useState("");
@@ -19,7 +21,20 @@ function Home() {
   const [filterMessage, setFilterMessage] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const perPage = 10;
+  const [confirmation, setConfirmation] = useState(false);
+  const [dropDown, setDropDown] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
 
+  useEffect(() => {
+    const drop = async () => {
+      await setOpen(true);
+      setTimeout(() => {
+        setOpen(false);
+      }, 4000);
+    };
+    drop();
+  }, []);
   useEffect(() => {
     setLoading(false);
     const AllStudents = async () => {
@@ -35,6 +50,46 @@ function Home() {
     };
     AllStudents();
   }, []);
+
+  const Search = async () => {
+    if (!searchTerm.trim()) {
+      // empty search box -- fall back to the unfiltered list
+      setLoading(true);
+      try {
+        const res = await axios.get(
+          `https://project-1-j62j.onrender.com/students/home`,
+        );
+        setStudents(res.data);
+        setFilterMessage("");
+        setCurrentPage(1);
+      } catch (err) {
+        console.error(err.message);
+      } finally {
+        setLoading(false);
+      }
+      return;
+    }
+    setLoading(true);
+    try {
+      const res = await axios.get(
+        `https://project-1-j62j.onrender.com/students/search`,
+        {
+          params: { name: searchTerm },
+        },
+      );
+      setStudents(res.data);
+      setCurrentPage(1);
+      setFilterMessage(
+        res.data.length === 0 ? `No students match "${searchTerm}"` : "",
+      );
+    } catch (err) {
+      console.error(err.message);
+      setStudents([]);
+      setFilterMessage(`No students match "${searchTerm}"`);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const Filter = async () => {
     setLoading(true);
@@ -67,16 +122,6 @@ function Home() {
       console.error(err.message);
     } finally {
       setLoading(false);
-    }
-  };
-
-  const deleteStudent = async (id) => {
-    try {
-      await axios.delete(`https://project-1-j62j.onrender.com/students/${id}`);
-      setStudents((prev) => prev.filter((student) => student._id !== id));
-    } catch (err) {
-      console.log(err.message);
-      setError(err.message);
     }
   };
 
@@ -114,19 +159,9 @@ function Home() {
     <>
       <div className="home-Body">
         <div className="home-billboard">
-          <img src={logo} alt="ots-logo" />
+          <img src={logo} alt="ots-logo" className="img" />
           <span className="billboard-text">
             <h1>KESTREL COLLEGE</h1>
-            <p>
-              Welcome Sir/Ma, Are you ready to turn your dreams into
-              reality{" "}
-            </p>
-          </span>
-          <span className="billboard-pryText">
-            <p>
-              Check out our students, their courses and level in the table below
-            </p>
-            <h5>You can create, view, and edit students' info</h5>
           </span>
         </div>
         <span className="top">
@@ -135,12 +170,18 @@ function Home() {
               <i className="bi bi-person-circle"></i> Students
             </h1>
           </span>
-          <span className="right">
-            <Link className="link" to="/add-student">
-              <button className="add-btn">
-                <i className="bi bi-person-fill-add"></i> Add Student
-              </button>
-            </Link>
+          <span className="search-wrapper">
+            <input
+              type="text"
+              className="student-search"
+              placeholder="Search students by name..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && Search()}
+            />
+            <button className="search-btn" onClick={Search} type="button">
+              <i className="bi bi-search"></i>
+            </button>
           </span>
         </span>
         <div className="table-et-filter">
@@ -188,26 +229,29 @@ function Home() {
               </span>
             </span>
           </div>
+          <span className={open ? "hover-info" : "hover-info-closed"}>
+            <h3 className="hi-text">
+              Click on student name to login to profile
+            </h3>
+          </span>
           <div className="student-table-wrapper">
             <table className="student-table">
+              <colgroup>
+                <col className="col-student" />
+                <col className="col-email" />
+                <col className="col-dept" />
+                <col className="col-compact" />
+                <col className="col-compact" />
+                <col className="col-compact" />
+              </colgroup>
               <thead>
                 <tr className="table-head-row">
-                  <th className="table-head">
-                    <input
-                      type="checkbox"
-                      checked={
-                        selected.length === students.length &&
-                        students.length > 0
-                      }
-                      onChange={toggleSelectAll}
-                    />
-                  </th>
-                  <th className="table-head">Student ⇕</th>
-                  <th className="table-head">Matric No. ⇕</th>
-                  <th className="table-head">Age ⇕</th>
-                  <th className="table-head">Department ⇕</th>
-                  <th className="table-head">Level ⇕</th>
-                  <th className="table-head">Actions ⇕</th>
+                  <th className="table-head">Student </th>
+                  <th className="table-head">Email </th>
+                  <th className="table-head">Department </th>
+                  <th className="table-head">Gender </th>
+                  <th className="table-head table-head-compact">Age </th>
+                  <th className="table-head table-head-compact">Level </th>
                 </tr>
               </thead>
               <tbody>
@@ -237,55 +281,23 @@ function Home() {
                         selected.includes(student._id) ? "selected-row" : ""
                       }
                     >
-                      <td style={{ width: "10px" }}>
-                        <input
-                          type="checkbox"
-                          checked={selected.includes(student._id)}
-                          onChange={() => toggleSelect(student._id)}
-                        />
-                      </td>
-                      <td className="t-student" style={{ width: "250px" }}>
+                      <td
+                        className="t-student"
+                        onClick={() => setDropDown(true)}
+                      >
                         <div className="student">
                           <span className="student-name">
-                            <strong className="avatar">
-                              {student.name?.[0]}
-                            </strong>
                             <h4 className="name">{student.name}</h4>
                           </span>
                         </div>
                       </td>
-                      <td className="td">{student.matric_no}</td>
-                      <td className="td">{student.age}</td>
+                      <td className="td td-email">{student.email}</td>
                       <td className="dept-div">{student.department}</td>
-                      <td className="td">{student.level}</td>
-                      <td className="actions-cell">
-                        <span
-                          onClick={() =>
-                            setOpenMenu(
-                              openMenu === student._id ? null : student._id,
-                            )
-                          }
-                        >
-                          ...
-                        </span>
-                        {openMenu === student._id && (
-                          <div className="dropdown-menu">
-                            <Link to={`/edit-info/${student._id}`}>
-                              <button className="edit-btn">
-                                <i className="bi bi-pencil-square"></i> Edit
-                              </button>
-                            </Link>
-                            <button
-                              onClick={() => deleteStudent(student._id)}
-                              className="delete-btn"
-                            >
-                              {" "}
-                              <i className="bi bi-trash3-fill"></i>
-                              &nbsp;&nbsp;Delete
-                            </button>
-                          </div>
-                        )}
+                      <td className="td td-compact td-capitalize">
+                        {student.gender?.[0]}
                       </td>
+                      <td className="td td-compact">{student.age}</td>
+                      <td className="td td-compact">{student.level}</td>
                     </tr>
                   ))
                 )}
@@ -324,9 +336,52 @@ function Home() {
             )}
           </div>
         </div>
+        <div className={dropDown ? "home-modal" : "home-modal-closed"}>
+          <span
+            className={dropDown ? "lc-close-btn" : "lc-close-btn-hidden"}
+            onClick={() => setDropDown(false)}
+          >
+            Close
+          </span>
+          <span>{dropDown && <LoginComponent />}</span>
+        </div>
       </div>
     </>
   );
 }
 
 export default Home;
+
+// <td className="actions-cell">
+//   <span
+//     onClick={() => {
+//       setOpenMenu(
+//         openMenu === student._id ? null : student._id,
+//       );
+//     }}
+//   >
+//     ...
+//   </span>
+//   {openMenu === student._id && (
+//     <div className="dropdown-menu">
+//       <Link to={`/edit-info/${student._id}`}>
+//         <button className="edit-btn">
+//           <i className="bi bi-pencil-square"></i> Edit
+//         </button>
+//       </Link>
+//       <button
+//         onClick={() => {
+//           deleteStudent(student._id);
+//           setStudents((prev) =>
+//             prev.filter((s) => s._id !== student._id),
+//           );
+//         }}
+//         className="delete-btn"
+//       >
+//         {" "}
+//         <i className="bi bi-trash3-fill"></i>
+//         &nbsp;&nbsp;Delete
+//       </button>
+//     </div>
+//   )}
+// </td>

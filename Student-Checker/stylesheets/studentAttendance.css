@@ -1,0 +1,99 @@
+.student-attendance-component {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 10vh;
+  gap: 2.2vh;
+  width: 100%;
+  box-sizing: border-box;
+  padding-bottom: 6vh;
+}
+.sa-intro {
+  display: flex;
+  align-items: center;
+  gap: 2vh;
+  width: 85%;
+  align-self: center;
+  flex-wrap: wrap;
+}
+.ai-header {
+  width: max-content;
+  font-family: "Poppins";
+  font-size: clamp(1.4rem, 4vw, 2.1rem);
+  padding: 1rem 3rem 1rem 1.5rem;
+  border-left: 7px solid var(--gold-bright);
+  border-top-right-radius: var(--radius-md);
+  border-bottom-right-radius: var(--radius-md);
+  color: var(--navy-700);
+  background-color: var(--white);
+  box-shadow: var(--shadow-card);
+}
+.sa-rate {
+  font-family: "Dm Sans";
+  color: var(--white);
+  background-color: var(--blue);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.sa-list {
+  width: 85%;
+  align-self: center;
+  background-color: var(--white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border);
+  padding: 2.5vh 2vh;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8vh;
+}
+.sa-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.2vh 4px;
+  border-bottom: 1px solid var(--border);
+  font-family: "Inter";
+}
+.sa-date {
+  color: var(--text);
+}
+.sa-status {
+  text-transform: capitalize;
+  font-weight: 600;
+}
+.sa-status-present {
+  color: var(--success);
+}
+.sa-status-late {
+  color: var(--amber);
+}
+.sa-status-absent {
+  color: var(--danger);
+}
+.attendance-loading,
+.attendance-empty,
+.attendance-error {
+  width: 85%;
+  align-self: center;
+  color: var(--text-muted);
+  font-family: "Inter";
+}
+.attendance-error {
+  color: var(--danger);
+}
+
+@media screen and (min-width: 800px) {
+  .student-attendance-component {
+    width: 70%;
+    position: relative;
+    left: 25%;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .student-attendance-component {
+    left: 20%;
+  }
+}

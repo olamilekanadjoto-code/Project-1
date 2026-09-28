@@ -12,40 +12,48 @@ import "@fontsource/inter";
 function AddStudent() {
   const navigate = useNavigate();
   const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [department, setDepartment] = useState("");
-  const [matric_no, setMatric_no] = useState("");
+  const [password, setPassword] = useState("");
   const [level, setLevel] = useState("");
   const [gender, setGender] = useState("");
-  const [age, setAge] = useState(null);
+  const [age, setAge] = useState(Number);
   const [error, setError] = useState("");
 
   const addStudent = async (e) => {
     e.preventDefault();
     try {
+      if (!age || !name || !email || !level || !department.trim())
+        return window.alert("All fields are required");
       const res = await axios.post(
         `https://project-1-j62j.onrender.com/students/add-student`,
-        { name, matric_no, age, gender, department, level },
+        { name, email, password, age, gender, department, level },
       );
       setName("");
       setDepartment("");
-      setMatric_no("");
+      setEmail("");
       setLevel("");
       setGender("");
+      setPassword("");
       setAge("");
-      console.log(res.data);
-      localStorage.setItem("token", res.data);
-      const token = await jwtDecode(res.data);
       navigate("/home");
     } catch (err) {
       console.log(err.message);
       setError(err.message);
     }
   };
-  // if (error) return <p>{error}</p>;
+  if (error) return <p>{error}</p>;
 
   return (
     <>
       <div className="add-component">
+        <h4
+          className="back-link"
+          style={{ position: "relative", left: "4%" }}
+          onClick={() => navigate(-1)}
+        >
+          ◀ Go back
+        </h4>
         <span className="add-intro">
           <h1 className="ai-header">Add Student</h1>
         </span>
@@ -61,13 +69,23 @@ function AddStudent() {
             />
           </span>
           <span>
-            <label className="label">Matric_no :</label>
+            <label className="label">Email :</label>
             <input
               className="ac-input"
               type="text"
-              value={matric_no}
-              onChange={(e) => setMatric_no(e.target.value)}
-              placeholder="Enter your matric_no"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Enter your email"
+            />
+          </span>
+          <span>
+            <label className="label">Password :</label>
+            <input
+              className="ac-input"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Enter your password"
             />
           </span>
           <span>

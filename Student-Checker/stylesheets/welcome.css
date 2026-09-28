@@ -8,10 +8,13 @@
   gap: clamp(50px, 15vw, 70px);
   flex-direction: column;
   width: 100%;
+  padding-top: 10%;
   min-height: 100vh;
   box-sizing: border-box;
   align-items: center;
+  justify-content: center;
   overflow-x: hidden;
+  background-color: var(--bg);
 }
 .welcome-hat {
   width: clamp(45%, 40vw, 55%);
@@ -19,6 +22,7 @@
   object-fit: cover;
   align-self: center;
   opacity: 0.3;
+  fill: var(--navy-900) !important;
   transform-origin: top center;
   animation: bellRing 3s ease-in-out infinite;
 }
@@ -26,21 +30,20 @@
   height: clamp(48px, 9vh, 64px);
   width: clamp(280px, 70vw, 400px);
   font-family: "Poppins";
-  border-radius: 4px;
-  transform: translate(0px, -15px);
-  background-color: #0c1d3b;
-  color: #fff;
+  border-radius: var(--radius-sm);
+  background-color: var(--navy-900);
+  color: var(--white);
   border: none;
+  font-weight: 600;
+  cursor: pointer;
 }
 .start-btn:hover {
   transition: 300ms ease;
-  cursor: pointer;
-  color: #0c1d3b;
-  background-color: #fff;
-  border: 1px solid #0c1d3b;
+  color: var(--navy-900);
+  background-color: var(--white);
+  border: 1px solid var(--navy-900);
 }
 .headerTexts {
-  transform: translate(-15px, 20px);
   display: flex;
   flex-direction: column;
   height: fit-content;
@@ -55,16 +58,15 @@
 }
 .headerTexts h3 {
   font-family: "Cal Sans";
-  transform: translateY(6px);
   font-weight: lighter;
-  color: #0c1d3b;
+  color: var(--navy-900);
   font-size: clamp(1.1rem, 3vw, 2rem);
 }
 .headerTexts p {
   font-family: "Cal Sans";
   font-weight: 470;
   font-size: clamp(1.7rem, 8vw, 5rem);
-  background: linear-gradient(90deg, #0d4097, #9b9ac1);
+  background: linear-gradient(90deg, var(--navy-700), var(--gold-dark));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -73,8 +75,22 @@
   width: clamp(60%, 70vw, 80%);
   text-align: center;
   font-size: clamp(0.85rem, 3vw, 1.8rem);
-  color: #293141;
+  color: var(--navy-600);
   font-family: "Poppins";
+}
+.demo-link-wrapper {
+  position: relative;
+  top: -20px;
+}
+.demo-link {
+  font-family: "Poppins";
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  text-decoration: underline;
+}
+.demo-link:hover {
+  color: var(--navy-700);
 }
 
 @keyframes bellRing {

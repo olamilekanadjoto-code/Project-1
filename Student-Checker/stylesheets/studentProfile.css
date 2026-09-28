@@ -1,0 +1,246 @@
+.profile-component {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-content: center;
+  gap: 26px;
+  position: relative;
+  top: 60px;
+  padding-bottom: 60px;
+  box-sizing: border-box;
+}
+
+/* Intro Styles */
+.pc-intro {
+  width: 90%;
+  background-color: var(--dark);
+  height: auto;
+  position: relative;
+  align-self: center;
+  gap: 14px;
+  display: flex;
+  flex-direction: column;
+  padding: 26px 24px;
+  border-radius: var(--radius-lg);
+}
+.pi-header {
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+.pi-avatar {
+  width: 50px;
+  height: 50px;
+  font-size: 1.15em;
+  font-family: "Inter";
+  text-transform: uppercase;
+  color: var(--white);
+  font-weight: 700;
+  align-content: center;
+  text-align: center;
+  background-color: var(--blue);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pi-name {
+  width: fit-content;
+  font-size: 1.7em;
+  font-weight: 500;
+  color: var(--white);
+  font-family: "Cal Sans", serif;
+}
+.pi-dept {
+  font-family: "Inter";
+  font-weight: 400;
+  color: var(--dark-text-muted);
+  font-size: 0.85em;
+  letter-spacing: 0.3px;
+}
+.actions-tab {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--white);
+  font-family: "Inter";
+  font-weight: 500;
+  font-size: 12.5px;
+  cursor: pointer;
+}
+
+.action-btn:hover {
+  background: var(--blue);
+  border-color: var(--blue);
+}
+
+.action-icon {
+  width: 13px;
+  height: 13px;
+}
+
+.action-btn--danger {
+  background: rgba(224, 67, 60, 0.16);
+  color: #ffb3af;
+  border-color: rgba(224, 67, 60, 0.4);
+}
+
+.action-btn--danger:hover {
+  background: var(--danger);
+  color: var(--white);
+  border-color: var(--danger);
+}
+/* Intro Styles */
+
+/* Info Grid Styles */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 16px;
+  width: 90%;
+  align-self: center;
+}
+.info-box {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px 16px;
+  width: 100%;
+  border-radius: var(--radius-md);
+  background-color: var(--white);
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border);
+}
+.ib-header {
+  text-transform: uppercase;
+  font-family: "Roboto";
+  font-size: 0.62em;
+  letter-spacing: 0.6px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+.ib-value {
+  font-family: "DM Sans";
+  font-size: 0.95em;
+  font-weight: 500;
+  color: var(--ink);
+}
+.ib-value--gender {
+  text-transform: capitalize;
+}
+/* Info Grid Styles */
+
+.displayed-confirmation {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+.close-confirmation-btn {
+  position: fixed;
+  right: 6%;
+  top: 10%;
+  z-index: 220;
+  background-color: #fff;
+  padding: 6px 7px;
+  border-radius: 10px;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  cursor: pointer;
+  color: var(--white);
+}
+.close-confirmation-btn:hover {
+  font-size: larger;
+}
+
+/* Media Query */
+@media screen and (min-width: 600px) {
+  .info-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .profile-component {
+    position: relative;
+    left: 10%;
+  }
+  .pi-name {
+    font-size: 2em;
+  }
+  .pi-dept {
+    font-size: 0.9em;
+  }
+  .pc-intro {
+    width: 65%;
+  }
+  .info-grid {
+    width: 65%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .profile-component {
+    left: 8%;
+  }
+  .pc-intro {
+    width: 60%;
+  }
+  .info-grid {
+    width: 60%;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .close-confirmation-btn {
+    right: 14%;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .profile-component {
+    left: 5%;
+  }
+  .pi-avatar {
+    width: 76px;
+    height: 76px;
+    font-size: 1.5em;
+  }
+  .pi-name {
+    font-size: 2.6em;
+  }
+  .pi-dept {
+    font-size: 1.05em;
+  }
+  .action-btn {
+    font-size: 14px;
+  }
+  .info-grid {
+    width: 65%;
+  }
+  .ib-header {
+    font-size: 0.75em;
+  }
+  .ib-value {
+    font-size: 1.15em;
+  }
+  .pc-intro {
+    width: 65%;
+  }
+  .close-confirmation-btn {
+    right: 23%;
+    top: 15%;
+  }
+}

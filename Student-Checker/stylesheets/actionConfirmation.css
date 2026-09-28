@@ -1,0 +1,108 @@
+/* actionConfirmation.css */
+
+.confirmation-component {
+  position: fixed;
+  inset: 0;
+  background: rgba(12, 29, 59, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 300;
+}
+
+.cc-panel {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px 30px;
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+  box-shadow: var(--shadow-pop);
+}
+
+.cc-panel::before {
+  content: "!";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  background: var(--danger-bg);
+  color: var(--danger);
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+}
+
+.cc-header {
+  font-family: "Cal Sans", serif;
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.45;
+  margin: 0 0 18px;
+}
+
+.cc-panel form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cc-panel input[type="text"] {
+  width: 100%;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  padding: 11px 12px;
+  font-family: "Inter", sans-serif;
+  font-size: 13.5px;
+  color: var(--ink);
+  background-color: var(--bg-alt);
+  box-sizing: border-box;
+  outline: none;
+}
+
+.cc-panel input[type="text"]:focus {
+  border-color: var(--blue);
+}
+
+.cc-panel button[type="submit"] {
+  width: 100%;
+  background: var(--danger);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 11px 0;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 13.5px;
+  cursor: pointer;
+}
+
+.cc-panel button[type="submit"]:hover {
+  background: #c53730;
+}
+
+.cc-warning {
+  margin: 14px 0 0;
+  font-family: "Inter", sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--danger);
+}
+
+@media screen and (min-width: 800px) {
+  .confirmation-component {
+    margin-left: 15%;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .confirmation-component {
+    margin-left: 8%;
+  }
+}

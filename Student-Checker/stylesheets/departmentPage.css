@@ -1,0 +1,235 @@
+.dept-page {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5vh;
+  width: 100%;
+  align-self: center;
+  position: relative;
+  padding-top: 10vh;
+  padding-bottom: 60px;
+}
+
+.back-link {
+  width: 95%;
+  align-self: center;
+  color: var(--blue);
+  font-family: "Roboto";
+  font-size: 0.8em;
+  letter-spacing: 0.3px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.dept-profile-slider {
+  width: 95%;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-slider {
+  width: fit-content;
+  padding: 5px 14px;
+  font-family: "DM Sans";
+  background-color: var(--navy-900);
+  color: var(--gold);
+  text-align: center;
+  border-radius: 999px;
+  font-size: 0.75em;
+  font-weight: 600;
+  align-content: center;
+}
+
+.dept-page-description {
+  width: 95%;
+  align-self: center;
+  font-size: 0.95em;
+}
+
+.dept-search-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 95%;
+  align-self: center;
+  background-color: var(--white);
+  border-radius: 999px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+.dept-search {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: none;
+  padding: 12px 16px;
+  font-size: 0.9rem;
+  font-family: "Inter";
+  color: var(--ink);
+}
+.dept-search::placeholder {
+  color: var(--text-soft);
+}
+.dept-search-btn {
+  border: none;
+  background-color: var(--blue);
+  color: var(--white);
+  width: 40px;
+  height: 40px;
+  margin: 3px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.dept-search-btn:hover {
+  background-color: var(--blue-dark);
+}
+
+.dept-page-students-heading {
+  font-family: "Cal Sans", serif;
+  color: var(--ink);
+  font-size: 1.1em;
+  letter-spacing: 0.7px;
+  width: 95%;
+  align-self: center;
+}
+
+.dept-table-wrapper {
+  background-color: var(--white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border);
+  position: relative;
+  align-self: center;
+  width: 95%;
+  overflow-x: auto;
+  height: auto;
+}
+.dept-page-table {
+  width: 100%;
+  min-width: 520px;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-family: var(--font-body);
+}
+
+.dept-page-table tbody {
+  padding-top: 15px;
+}
+
+.dpt-col-name {
+  width: 36%;
+}
+.dpt-col-email {
+  width: 34%;
+}
+.dpt-col-compact {
+  width: 15%;
+}
+.dpt-th-compact {
+  text-align: center;
+}
+
+.dept-page-table th {
+  font-size: clamp(0.68rem, 0.9vw, 0.82rem);
+  font-weight: 600;
+  color: var(--text-muted);
+  text-align: left;
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-family: var(--font-body);
+  border-bottom: 1px solid var(--border);
+  background-color: var(--bg-alt);
+  padding: 14px 16px;
+}
+
+.dept-page-table td {
+  border-bottom: 1px solid var(--border);
+  padding: 14px 16px;
+  color: var(--text);
+  font-size: clamp(0.78rem, 0.9vw, 0.9rem);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.dept-page-table tbody tr:hover {
+  background-color: var(--blue-pale-2);
+}
+.dpt-td-email {
+  color: var(--text-muted);
+}
+.dpt-td-compact {
+  text-align: left;
+}
+.dpt-td-capitalize {
+  text-transform: capitalize;
+}
+.d-name {
+  color: var(--blue);
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+
+.dept-page-empty,
+.dept-page-status {
+  color: var(--text-muted);
+  font-family: "Inter";
+  padding: 4vh 0;
+  text-align: center;
+}
+
+@media screen and (min-width: 481px) {
+  .dept-page-description {
+    width: 90%;
+    position: relative;
+    left: -2.5%;
+  }
+}
+@media screen and (min-width: 800px) {
+  .dept-page {
+    position: relative;
+    left: 25%;
+    width: 73%;
+  }
+  .dept-page-description {
+    font-size: 1.05em;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .dept-table-wrapper,
+  .dept-search-wrapper {
+    width: 85%;
+    position: relative;
+    left: -5%;
+  }
+  .dept-page-description {
+    width: 80%;
+    left: -7.3%;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .dept-page {
+    left: 20%;
+  }
+  .dept-table-wrapper,
+  .dept-search-wrapper {
+    width: 70%;
+    left: -13%;
+  }
+  .dept-page-description {
+    width: 65%;
+    left: -15%;
+  }
+  .back-link {
+    font-size: 0.9em;
+  }
+}

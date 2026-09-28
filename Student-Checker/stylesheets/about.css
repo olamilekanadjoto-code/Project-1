@@ -1,12 +1,12 @@
 body {
-  background-color: #f3f6fc;
+  background-color: var(--bg);
 }
 .about-component {
   display: flex;
   flex-direction: column;
   height: 100%;
   position: relative;
-  top: 7vh;
+  padding-top: 10vh;
   gap: 3vh;
   justify-content: space-evenly;
   width: 100%;
@@ -18,16 +18,19 @@ body {
   display: flex;
   flex-direction: column;
   width: 90%;
-  border-radius: 10px;
-  padding: 25px 10px;
+  border-radius: var(--radius-md);
+  padding: 25px 20px;
   height: auto;
   gap: 4vh;
   align-self: center;
-  background-color: #132a52;
+  background-color: var(--dark);
 }
 .ai-logo {
-  width: clamp(40px, 15vw, 150px);
-  height: clamp(40px, 33vh, 70px);
+  width: clamp(40px, 15vw, 90px);
+  height: clamp(40px, 15vw, 90px);
+  border-radius: var(--radius-sm);
+  background: var(--white);
+  padding: 6px;
 }
 .ai-text-wrapper {
   display: flex;
@@ -37,19 +40,21 @@ body {
 .ai-text-header {
   font-size: 0.7em;
   font-family: "Roboto";
-  letter-spacing: 0.3px;
-  color: #c9a227;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--gold);
   width: fit-content;
 }
 .ai-text-name {
   font-size: 2em;
-  font-family: serif;
-  color: #ffffff;
+  font-family: "Cal Sans", serif;
+  color: var(--white);
   width: fit-content;
+  font-weight: 500;
 }
 .ai-text-descrip {
   font-size: 0.8em;
-  color: #e9effa;
+  color: var(--dark-text-muted);
   font-family: "Inter";
 }
 /* Intro Styles */
@@ -60,64 +65,71 @@ body {
   flex-direction: column;
   width: 90%;
   height: auto;
-  border-radius: 10px;
-  background-color: #fff;
+  border-radius: var(--radius-md);
+  background-color: var(--white);
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border);
   align-self: center;
-  padding: 10px 10px;
+  padding: 20px 20px;
   justify-content: space-evenly;
 }
 .history-header {
-  font-family: "serif";
-  font-size: 0.9em;
-  font-weight: 300;
+  font-family: "Cal Sans", serif;
+  font-size: 0.95em;
+  font-weight: 500;
   letter-spacing: 0.3px;
+  color: var(--ink);
 }
 .p-1,
 .p-2 {
-  font-size: 0.7em;
-  color: #182238;
+  font-size: 0.78em;
+  color: var(--text);
   font-family: "Poppins";
+  line-height: 1.6;
 }
 /* History Styles */
 
 /* Mission Styles */
 .mission-div {
   width: 90%;
-  border-radius: 10px;
-  background-color: #e9effa;
+  border-radius: var(--radius-md);
+  background-color: var(--blue-pale);
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-self: center;
-  padding: 10px 10px;
+  padding: 20px 20px;
   height: auto;
-  gap: 1vh;
+  gap: 1.5vh;
 }
 .md-header {
   width: fit-content;
   font-size: 0.8em;
   font-family: "Roboto";
   letter-spacing: 0.5px;
-  color: #2f5fce;
+  text-transform: uppercase;
+  color: var(--accent-blue);
 }
 .md-p {
   font-family: "Poppins";
-  font-size: 0.7em;
+  font-size: 0.75em;
+  color: var(--text);
 }
 .md-stats {
   display: grid;
   width: 80%;
   grid-template-columns: repeat(3, 1fr);
 }
-.md-stats b {
-  font-family: "Times New Roman", Times, serif;
-  font-size: 1em;
-  color: #132a52;
+.md-stats > .stats b {
+  font-family: "Cal Sans";
+  font-size: 1.1em;
+  color: var(--navy-800);
 }
 .md-stats h6 {
   font-family: "Poppins";
-  font-size: 0.6em;
-  font-weight: 300;
+  font-size: 0.65em;
+  font-weight: 400;
+  color: var(--text-muted);
 }
 .stats {
   width: fit-content;
@@ -129,15 +141,16 @@ body {
   width: 90%;
   height: auto;
   display: flex;
-  gap: 1vh;
+  gap: 1.5vh;
   flex-direction: column;
   align-self: center;
 }
 .attr-header {
   font-family: "Roboto";
-  letter-spacing: 0.4px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
   font-size: 0.7em;
-  color: #c9a227;
+  color: var(--gold-dark);
   width: fit-content;
 }
 .attr-grid {
@@ -148,18 +161,23 @@ body {
 }
 .attr-box {
   width: 100%;
-  background-color: #fff;
-  padding: 10px 10px;
-  border-radius: 10px;
+  background-color: var(--white);
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border);
+  padding: 14px 14px;
+  border-radius: var(--radius-md);
 }
 .ab-header {
-  font-family: "Times New Roman", Times, serif;
-  font-size: 0.9em;
+  font-family: "Cal Sans", serif;
+  font-size: 0.95em;
+  font-weight: 700;
+  color: var(--navy-800);
+  letter-spacing: 0.8px;
   width: fit-content;
 }
 .ab-p {
-  color: #182238;
-  font-size: 0.6em;
+  color: var(--text-muted);
+  font-size: 0.65em;
   text-align: left;
   width: 100%;
   font-family: "Poppins";
@@ -173,29 +191,25 @@ body {
   width: 90%;
   height: auto;
   gap: 1vh;
-  border-radius: 10px;
-  background-color: #132a52;
+  border-radius: var(--radius-md);
+  background-color: var(--dark);
   align-self: center;
-  padding: 10px 10px;
+  padding: 20px 20px;
 }
 .footer em {
   font-family: "DM Sans";
-  font-size: 0.8em;
-  color: #fff;
+  font-size: 0.85em;
+  color: var(--white);
 }
 .footer h5 {
   font-family: "Inter";
-  color: #c9a227;
-  font-size: 0.6em;
+  color: var(--gold);
+  font-size: 0.65em;
   width: fit-content;
 }
 /* Footer Styles */
 
 @media screen and (min-width: 500px) {
-  .history {
-    align-content: center;
-    align-items: center;
-  }
   .history-header {
     width: 85%;
   }
@@ -223,7 +237,7 @@ body {
 @media screen and (min-width: 800px) {
   .about-component {
     width: 75%;
-    left: 25%;
+    left: 20%;
   }
   .history-header {
     align-self: start;
@@ -233,20 +247,20 @@ body {
   .p-1,
   .p-2 {
     align-self: start;
-    font-size: 0.8em;
+    font-size: 0.85em;
     width: 95%;
   }
   .md-header {
     font-size: 1em;
   }
   .md-p {
-    font-size: 0.8em;
+    font-size: 0.85em;
   }
   .md-stats b {
-    font-size: 1.2em;
+    font-size: 1.5em;
   }
   .md-stats h6 {
-    font-size: 0.7em;
+    font-size: 0.75em;
   }
   .attr-header {
     font-size: 0.9rem;
@@ -288,12 +302,8 @@ body {
   .md-p {
     width: 85%;
   }
-  .md-stats {
-    width: 50%;
-  }
   .ai-text-wrapper {
     width: 70%;
-    padding-left: 25px;
   }
   .attr-box {
     width: 85%;
@@ -302,7 +312,7 @@ body {
 
 @media screen and (min-width: 1300px) {
   .about-component {
-    left: 20%;
+    left: 15%;
   }
   .ac-intro {
     width: 75%;
@@ -336,12 +346,8 @@ body {
     width: 80%;
     font-size: 1em;
   }
-  .md-stats {
-    width: 50%;
-  }
   .ai-text-wrapper {
     width: 65%;
-    padding-left: 25px;
   }
 }
 

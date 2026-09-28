@@ -12,6 +12,8 @@ import "@fontsource/inter";
 function UpdateStudent() {
   const navigate = useNavigate();
   const { id } = useParams();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [age, setAge] = useState(null);
   const [department, setDepartment] = useState("");
   const [level, setLevel] = useState("");
@@ -21,12 +23,20 @@ function UpdateStudent() {
     try {
       const token = localStorage.getItem("token");
       const decoded = jwtDecode(token);
-      console.log(decoded.id);
+      if (!age || !name || !email || !level || !department.trim())
+        return window.alert("All fields are required");
       const res = await axios.put(
         `https://project-1-j62j.onrender.com/students/${id}`,
-        { age, level },
+        {
+          age,
+          name,
+          email,
+          department,
+          level,
+        },
       );
       console.log(res.data);
+      navigate(`/students/${id}`);
     } catch (err) {
       console.error(err.message);
     }
@@ -35,6 +45,13 @@ function UpdateStudent() {
   return (
     <>
       <div className="update-component">
+        <h4
+          className="back-link"
+          style={{ position: "relative", left: "4%" }}
+          onClick={() => navigate(-1)}
+        >
+          ◀ Back to profile
+        </h4>
         <span className="update-intro">
           <h1 className="ui-header">Update Student</h1>
           <h3 className="ui-description">
@@ -43,11 +60,32 @@ function UpdateStudent() {
         </span>
         <form onSubmit={updateStudent} className="update-form">
           <span>
+            <label className="uf-label">Name :</label>
+            <input
+              className="uf-details"
+              type="text"
+              value={name}
+              placeholder="Enter new name"
+              onChange={(e) => setName(e.target.value)}
+            />
+          </span>
+          <span>
+            <label className="uf-label">Email :</label>
+            <input
+              className="uf-details"
+              type="text"
+              value={email}
+              placeholder="Enter new email"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </span>
+          <span>
             <label className="uf-label">Age :</label>
             <input
               className="uf-details"
               type="number"
               placeholder="Enter new age"
+              value={age}
               onChange={(e) => setAge(e.target.value)}
             />
           </span>
@@ -93,7 +131,8 @@ function UpdateStudent() {
         </form>
         <span className="uc-notice">
           <h3 className="notice">
-            A student's name, matric_no, and gender cannot be changed{" "}
+            A student's name, matric_no, password, and gender cannot be
+            changed{" "}
           </h3>
         </span>
       </div>

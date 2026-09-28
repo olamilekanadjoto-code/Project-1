@@ -1,0 +1,80 @@
+.login-component-displayed,
+.login-component-hidden {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  max-width: 380px;
+  justify-self: center;
+  align-self: center;
+  padding: 28px 24px 30px;
+  border-radius: var(--radius-lg);
+  gap: 14px;
+  background-color: var(--white);
+  box-shadow: var(--shadow-pop);
+}
+.login-component-displayed {
+  visibility: visible;
+  transition: ease 400ms;
+}
+.login-component-hidden {
+  transform: translateY(-120%);
+  transition: ease 300ms;
+  visibility: hidden;
+}
+
+.lc-body {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  gap: 12px;
+}
+.lc-header {
+  font-family: "Poppins";
+  line-height: 22px;
+  font-size: 0.95em;
+  color: var(--ink);
+  text-align: center;
+}
+.lc-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.lc-input {
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-strong);
+  outline: none;
+  background-color: var(--bg-alt);
+  padding: 11px 12px;
+  font-family: "Inter";
+  font-size: 0.9rem;
+  color: var(--ink);
+}
+.lc-input:focus {
+  border-color: var(--blue);
+}
+.lc-submit-btn {
+  width: 100%;
+  padding: 11px 5px;
+  color: var(--white);
+  background-color: var(--blue);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: "Inter";
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 200ms ease;
+}
+.lc-submit-btn:hover {
+  background-color: var(--blue-dark);
+}
+
+@media screen and (min-width: 501px) {
+  .login-component-displayed,
+  .login-component-hidden {
+    width: 420px;
+  }
+}

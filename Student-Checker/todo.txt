@@ -1,5 +1,6 @@
-1. Filter type changes to Home.jsx
-2. Feedback controller's env
-3. Pagination
-4. Dept Component
+
+
 Souija Boi
+Render address = https://project-1-j62j.onrender.com/
+Atlas DB = mongodb+srv://olamilekanadjoto_db_user:olamilekan@cluster0.apj4qx1.mongodb.net/kestrelCollege?appName=Cluster0
+Compass DB = mongodb://localhost:27017/kestrelProjectDB

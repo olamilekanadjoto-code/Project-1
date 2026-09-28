@@ -6,7 +6,7 @@ import "@fontsource/inter";
 import { useEffect, useState } from "react";
 import logo from "../src/assets/kestrel-college-crest.svg";
 
-function Navbar() {
+function DemoNavbar() {
   const [dropDown, setDropDown] = useState(false);
   const location = useLocation();
   const [navKey, setNavKey] = useState(0);
@@ -31,7 +31,6 @@ function Navbar() {
     }
   }, [location.pathname]);
 
-  // console.log(navKey)
   return (
     <>
       <svg
@@ -55,21 +54,23 @@ function Navbar() {
         style={{ opacity: dropDown ? 1 : 1 }}
       >
         <div className="navBody">
-          <div className="logo-et-header" style={{ columnSpan: 2 }}>
-            <h1 className="header">KTC</h1>
+          <div className="logo-et-header">
+            <h1 className="header">K • T • C</h1>
             <img src={logo} alt="ots-logo" />
           </div>
           <div className="navBar">
-            <Link to="/home">
+            <Link to="/demo-home">
               <button className="linkButton">Home</button>
             </Link>
-            {/* <Link to="/departments"><button className="linkButton">Departments</button></Link> */}
-            <Link to="/about">
+            <Link to="/demo-departments">
+              <button className="linkButton">Departments</button>
+            </Link>
+            <Link to="/demo-about">
               <button className="linkButton">About Us</button>
             </Link>
-            {/* <Link to="/feedback-report">
+            <Link to="/feedback-report">
               <button className="linkButton">Feedback</button>
-            </Link> */}
+            </Link>
             <Link to="/add-student">
               <button className="linkButton">Add Student</button>
             </Link>
@@ -79,11 +80,19 @@ function Navbar() {
                 xmlns="http://www.w3.org/2000/svg"
                 id="arrow"
                 fill="#ffffff"
+                style={{
+                  width: "34px",
+                  height: "34px",
+                  transform: "rotate(-90deg)",
+                  position: "relative",
+                  top: "35%",
+                  left: "40%",
+                }}
                 className="bi bi-arrow-up-circle"
                 viewBox="0 0 16 16"
               >
                 <path
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                   d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z"
                 />
               </svg>
@@ -95,4 +104,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default DemoNavbar;

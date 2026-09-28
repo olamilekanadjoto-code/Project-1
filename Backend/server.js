@@ -18,6 +18,12 @@ mongoose
 const routes = require("./routes/mainRoutes");
 app.use("/students", routes);
 
+const deptRouter = require("./routes/deptRoute");
+app.use("/departments", deptRouter);
+
+const attendanceRouter = require("./routes/attendanceRoute");
+app.use("/attendance", attendanceRouter);
+
 app.listen(process.env.PORT, () => {
   console.log(`Server is running on port ${port}`);
 });
