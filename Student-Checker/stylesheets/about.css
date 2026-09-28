@@ -237,7 +237,7 @@ body {
 @media screen and (min-width: 800px) {
   .about-component {
     width: 75%;
-    left: 20%;
+    left: 23%;
   }
   .history-header {
     align-self: start;
@@ -312,7 +312,7 @@ body {
 
 @media screen and (min-width: 1300px) {
   .about-component {
-    left: 15%;
+    left: 18%;
   }
   .ac-intro {
     width: 75%;

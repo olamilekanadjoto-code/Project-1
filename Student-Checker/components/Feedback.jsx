@@ -6,8 +6,10 @@ import "@fontsource/poppins";
 import "@fontsource/dm-sans";
 import "@fontsource/cal-sans";
 import "@fontsource/inter";
+import { useNavigate } from "react-router-dom";
 
 function Feedback() {
+  const navigate = useNavigate();
   const [sender, setSender] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");

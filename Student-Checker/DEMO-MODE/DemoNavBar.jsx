@@ -74,6 +74,9 @@ function DemoNavbar() {
             <Link to="/add-student">
               <button className="linkButton">Add Student</button>
             </Link>
+            <Link to="/">
+              <button className="linkButton">Leave Visitor Mode</button>
+            </Link>
             <span>
               <svg
                 onClick={() => setDropDown(false)}
