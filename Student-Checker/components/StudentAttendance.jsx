@@ -16,7 +16,7 @@ function StudentAttendance() {
     const fetchRecords = async () => {
       try {
         const res = await axios.get(
-          `https://project-1-j62j.onrender.com/student/${id}`,
+          `https://project-1-j62j.onrender.com/attendance/student/${id}`,
         );
         setRecords(res.data);
       } catch (err) {
