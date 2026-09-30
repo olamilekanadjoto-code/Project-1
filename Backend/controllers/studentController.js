@@ -5,7 +5,8 @@ const { generateUniqueMatricNo } = require("../utils/generateMatricNo");
 
 const createStudent = async (req, res) => {
   try {
-    const { name, email, password, age, gender, department, level } = req.body;
+    const { name, email, phone, password, age, gender, department, level } =
+      req.body;
     if (!name) {
       return res.status(400).json("Name field is required");
       console.log("Name is required");
@@ -13,6 +14,10 @@ const createStudent = async (req, res) => {
     if (!email) {
       console.log("Email is required");
       return res.status(400).json("Email field is required");
+    }
+    if (!phone) {
+      console.log("Phone is required");
+      return res.status(400).json("Phone field is required");
     }
     if (!password) {
       console.log("Password is required");
@@ -26,6 +31,7 @@ const createStudent = async (req, res) => {
     const student = new Student({
       name,
       email,
+      phone,
       password: hashedPassword,
       age,
       gender,

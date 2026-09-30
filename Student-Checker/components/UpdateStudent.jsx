@@ -14,6 +14,7 @@ function UpdateStudent() {
   const { id } = useParams();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [age, setAge] = useState(null);
   const [department, setDepartment] = useState("");
   const [level, setLevel] = useState("");
@@ -23,19 +24,19 @@ function UpdateStudent() {
     try {
       const token = localStorage.getItem("token");
       const decoded = jwtDecode(token);
-      if (!age || !name || !email || !level || !department.trim())
+      if (!age || !name || !phone || !email || !level || !department.trim())
         return window.alert("All fields are required");
       const res = await axios.put(
         `https://project-1-j62j.onrender.com/students/${id}`,
         {
           age,
           name,
+          phone,
           email,
           department,
           level,
         },
       );
-      console.log(res.data);
       navigate(`/students/${id}`);
     } catch (err) {
       console.error(err.message);
@@ -73,10 +74,20 @@ function UpdateStudent() {
             <label className="uf-label">Email :</label>
             <input
               className="uf-details"
-              type="text"
+              type="email"
               value={email}
               placeholder="Enter new email"
               onChange={(e) => setEmail(e.target.value)}
+            />
+          </span>
+          <span>
+            <label className="uf-label">Phone No :</label>
+            <input
+              className="uf-details"
+              type="text"
+              value={phone}
+              placeholder="Enter new phone number"
+              onChange={(e) => setPhone(e.target.value)}
             />
           </span>
           <span>

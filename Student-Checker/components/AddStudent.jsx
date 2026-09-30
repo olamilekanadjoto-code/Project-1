@@ -13,6 +13,7 @@ function AddStudent() {
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [department, setDepartment] = useState("");
   const [password, setPassword] = useState("");
   const [level, setLevel] = useState("");
@@ -23,15 +24,16 @@ function AddStudent() {
   const addStudent = async (e) => {
     e.preventDefault();
     try {
-      if (!age || !name || !email || !level || !department.trim())
+      if (!age || !name || !phone || !email || !level || !department.trim())
         return window.alert("All fields are required");
       const res = await axios.post(
         `https://project-1-j62j.onrender.com/students/add-student`,
-        { name, email, password, age, gender, department, level },
+        { name, email, phone, password, age, gender, department, level },
       );
       setName("");
       setDepartment("");
       setEmail("");
+      setPhone("");
       setLevel("");
       setGender("");
       setPassword("");
@@ -39,10 +41,9 @@ function AddStudent() {
       navigate("/home");
     } catch (err) {
       console.log(err.message);
-      setError(err.message);
+      setError("Add student failed due to unexpected error");
     }
   };
-  if (error) return <p>{error}</p>;
 
   return (
     <>
@@ -58,6 +59,7 @@ function AddStudent() {
           <h1 className="ai-header">Add Student</h1>
         </span>
         <form className="userForm" onSubmit={addStudent}>
+          <h4 style={{ color: "red", fontFamily: "Poppins" }}>{error}</h4>
           <span>
             <label className="label">Name :</label>
             <input
@@ -72,10 +74,20 @@ function AddStudent() {
             <label className="label">Email :</label>
             <input
               className="ac-input"
-              type="text"
+              type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
+            />
+          </span>
+          <span>
+            <label className="label">Phone No. :</label>
+            <input
+              className="ac-input"
+              type="text"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              placeholder="Enter your phone number"
             />
           </span>
           <span>
@@ -107,7 +119,7 @@ function AddStudent() {
               name="gender"
               id="select"
             >
-              <option value="">Custom</option>
+              <option value="">I prefer not to say</option>
               <option value="male">Male</option>
               <option value="female">Female</option>
             </select>

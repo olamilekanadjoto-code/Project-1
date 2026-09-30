@@ -109,7 +109,7 @@ function DepartmentPage() {
             <thead>
               <tr>
                 <th>Name</th>
-                <th>Email</th>
+                <th>Phone</th>
                 <th className="dpt-th-compact">Age</th>
                 <th className="dpt-th-compact">Level</th>
                 <th className="dpt-th-compact">Gender</th>
@@ -119,7 +119,7 @@ function DepartmentPage() {
               {displayedStudents.map((s) => (
                 <tr key={s._id}>
                   <td className="d-name">{s.name}</td>
-                  <td className="dpt-td-email">{s.email}</td>
+                  <td className="dpt-td-email">{s.phone}</td>
                   <td className="dpt-td-compact dpt-td-capitalize">{s.age}</td>
                   <td className="dpt-td-compact">{s.level}</td>
                   <td className="dpt-td-compact dpt-td-capitalize">

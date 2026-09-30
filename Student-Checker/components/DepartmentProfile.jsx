@@ -109,7 +109,7 @@ function DepartmentPage() {
             <thead>
               <tr>
                 <th>Name</th>
-                <th>Email</th>
+                <th>Phone No.</th>
                 <th className="dpt-th-compact">Age</th>
                 <th className="dpt-th-compact">Level</th>
                 <th className="dpt-th-compact">Gender</th>
@@ -124,7 +124,7 @@ function DepartmentPage() {
                   >
                     {s.name}
                   </td>
-                  <td className="dpt-td-email">{s.email}</td>
+                  <td className="dpt-td-email">{s.phone}</td>
                   <td className="dpt-td-compact">{s.age}</td>
                   <td className="dpt-td-compact">{s.level}</td>
                   <td className="dpt-td-compact dpt-td-capitalize">

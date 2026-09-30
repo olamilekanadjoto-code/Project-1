@@ -144,6 +144,10 @@ function StudentProfile() {
             <h6 className="ib-value">{student.email}</h6>
           </span>
           <span className="info-box">
+            <h5 className="ib-header">Phone No.</h5>
+            <h6 className="ib-value">{student.phone}</h6>
+          </span>
+          <span className="info-box">
             <h5 className="ib-header">Gender</h5>
             <h6 className="ib-value ib-value--gender">{student.gender}</h6>
           </span>

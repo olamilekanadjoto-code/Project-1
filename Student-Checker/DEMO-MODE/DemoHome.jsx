@@ -238,7 +238,7 @@ function Home() {
               <thead>
                 <tr className="table-head-row">
                   <th className="table-head">Student </th>
-                  <th className="table-head">Email </th>
+                  <th className="table-head">Phone </th>
                   <th className="table-head">Department </th>
                   <th className="table-head">Gender </th>
                   <th className="table-head table-head-compact">Age </th>
@@ -279,7 +279,7 @@ function Home() {
                           </span>
                         </div>
                       </td>
-                      <td className="td">{student.email}</td>
+                      <td className="td">{student.phone}</td>
                       <td className="dept-div">{student.department}</td>
                       <td
                         className="td td-compact td-capitalize"
