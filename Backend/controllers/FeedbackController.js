@@ -1,19 +1,6 @@
 const Feedback = require("../model/Feedback");
 const nodemailer = require("nodemailer");
 
-const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 465,
-  secure: true,
-  family: 4,
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-  lookup: (hostname, options, callback) =>
-    dns.lookup(hostname, { family: 4 }, callback),
-});
-
 const sendFeedback = async (req, res) => {
   try {
     const { sender, email, message } = req.body;
@@ -24,12 +11,20 @@ const sendFeedback = async (req, res) => {
     const feedback = new Feedback({ sender, email, message });
     await feedback.save();
 
-    await transporter.sendMail({
-      from: `"Kestrel College" <${process.env.ORG_EMAIL}>`,
-      to: process.env.EMAIL_USER,
-      subject: `New Feedback ${sender}`,
-      text: `From ${sender} (${email})\n\nMessage:\n${message}`,
-    });
+    fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: "Kestrel College <onboarding@resend.dev>",
+        to: [process.env.EMAIL_USER],
+        reply_to: email,
+        subject: `New Feedback ${sender}`,
+        text: `From ${sender} (${email})\n\nMessage:\n${message}`,
+      }),
+    }).catch((err) => console.error("Email failed:", err.message));
 
     res.status(200).json({ message: "Feedback sent successfully" });
   } catch (err) {

@@ -29,7 +29,9 @@ function StudentAttendance() {
     fetchRecords();
   }, [id]);
 
-  const presentCount = records.filter((r) => r.status === "present").length;
+  const presentCount = records.filter(
+    (r) => r.status === "present" || "late",
+  ).length;
   const rate =
     records.length > 0
       ? Math.round((presentCount / records.length) * 100)

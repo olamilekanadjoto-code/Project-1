@@ -7,6 +7,7 @@ function Confirmation() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [matricNo, setMatricNo] = useState("");
+  const [error, setError] = useState(null);
 
   const onSubmit = async () => {
     try {
@@ -17,7 +18,9 @@ function Confirmation() {
         },
       );
     } catch (err) {
+      setError("Incorrect Matric_no");
       console.error(err.message);
+      throw err;
     }
   };
 
@@ -45,6 +48,7 @@ function Confirmation() {
     <>
       <div className="confirmation-component">
         <div className="cc-panel">
+          <h4 style={{ color: "red", fontFamily: "Poppins" }}>{error}</h4>
           <h2 className="cc-header">
             Matric_no is required before deleting student profile
           </h2>

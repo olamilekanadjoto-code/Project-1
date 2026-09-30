@@ -52,23 +52,23 @@ function TakeAttendance() {
     setStatusMap((prev) => ({ ...prev, [id]: status }));
   };
 
-  const submitAttendance = async (e) => {
+  const submitAttendance = async (e, s) => {
     e.preventDefault();
     setMessage("");
     setError("");
     try {
-      const records = students.map((s) => ({
+      const record = {
         studentId: s._id,
         matricNo: s.matricNo,
         status: statusMap[s._id] || "present",
-      }));
+      };
 
       await axios.post(`https://project-1-j62j.onrender.com/attendance/mark`, {
-        records,
+        records: [record],
         department,
         level,
       });
-      setMessage("Attendance saved for today");
+      setMessage(`Attendance saved for ${s.name} today`);
     } catch (err) {
       console.log(err.message);
       setError("Something went wrong saving attendance");
@@ -130,9 +130,13 @@ function TakeAttendance() {
       {loading ? (
         <p className="attendance-loading">Loading students...</p>
       ) : students.length > 0 ? (
-        <form className="attendance-list" onSubmit={submitAttendance}>
-          {students.map((s) => (
-            <div className="attendance-row" key={s._id}>
+        students.map((s) => (
+          <form
+            className="attendance-list"
+            key={s._id}
+            onSubmit={(e) => submitAttendance(e, s)}
+          >
+            <div className="attendance-row">
               <span className="attendance-name">
                 {s.name}{" "}
                 <span className="attendance-matric">({s.matricNo})</span>
@@ -153,12 +157,12 @@ function TakeAttendance() {
                   </button>
                 ))}
               </span>
+              <button className="ac-btn save-btn" type="submit">
+                Save Attendance
+              </button>
             </div>
-          ))}
-          <button className="ac-btn save-btn" type="submit">
-            Save Attendance
-          </button>
-        </form>
+          </form>
+        ))
       ) : (
         department &&
         level && (

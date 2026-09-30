@@ -37,7 +37,7 @@ function StudentProfile() {
     const getMissingDays = async () => {
       try {
         const res = await axios.get(
-          `https://project-1-j62j.onrender.com/student/${id}`,
+          `https://project-1-j62j.onrender.com/attendance/student/${id}`,
         );
         // late counts as present -- only "absent" days are missing days
         const absentDays = res.data.filter(

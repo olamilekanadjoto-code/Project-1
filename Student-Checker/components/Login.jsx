@@ -32,8 +32,6 @@ function LoginComponent() {
     }
   };
 
-  if (error) return <h1>{error}</h1>;
-
   return (
     <>
       <div
@@ -42,6 +40,7 @@ function LoginComponent() {
         }
       >
         <div className="lc-body">
+          <h4 style={{ color: "red", fontFamily: "Poppins" }}>{error}</h4>
           <h4 className="lc-header">
             Enter student's details to access profile
           </h4>
