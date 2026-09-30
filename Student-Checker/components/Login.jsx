@@ -28,7 +28,7 @@ function LoginComponent() {
       navigate(`/students/${decodedToken.id}`);
     } catch (err) {
       console.error(err.message);
-      setError(err.message);
+      setError("Incorrect Credentials");
     }
   };
 
