@@ -269,7 +269,11 @@ function Home() {
                   </tr>
                 ) : paginatedStudents.length === 0 ? (
                   <tr>
-                    <td colSpan="7" className="no-students">
+                    <td
+                      colSpan="7"
+                      className="no-students"
+                      onClick={(e) => navigate("/add-student")}
+                    >
                       No students yet — add your first one!
                     </td>
                   </tr>
