@@ -54,7 +54,9 @@
 }
 .fp-input {
   padding: 4px 0px;
-  padding-left: 5%;
+}
+.fp-input::placeholder {
+  padding-left: 1%;
 }
 .feePayment > form {
   display: flex;
