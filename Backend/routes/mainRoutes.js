@@ -9,6 +9,7 @@ const {
   filterStudents,
   loginStudent,
   studentConfirmation,
+  updateFeeStatus,
 } = require("../controllers/studentController");
 const { sendFeedback } = require("../controllers/FeedbackController");
 const verifyToken = require("../middleware/verifyToken");
