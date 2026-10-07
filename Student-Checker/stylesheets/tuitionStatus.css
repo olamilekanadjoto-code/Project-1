@@ -1,0 +1,78 @@
+.tuition-component {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  gap: 20px;
+  padding-bottom: 30px;
+  padding-top: 30px;
+  height: min-content;
+}
+.feeStatus {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-left: 5%;
+}
+.feeStatus > h4 {
+  width: fit-content;
+  padding: 10px 8px;
+  background-color: var(--navy-900);
+  border-radius: 8px;
+  font-family: "Inter";
+  font-weight: 500;
+  font-size: 0.9em;
+}
+.fs-header {
+  color: var(--navy-600);
+  font-family: "Poppins";
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: large;
+}
+.paid-fee {
+  color: var(--sage);
+}
+.total-fee {
+  color: var(--white);
+}
+.owed-fee {
+  color: var(--danger);
+}
+
+.feePayment {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding-left: 5%;
+}
+.fp-header {
+  color: var(--gold-dark);
+  font-family: "Nunito sans";
+  font-weight: 900;
+  font-size: 0.9em;
+  text-transform: capitalize;
+}
+.fp-input {
+  padding: 4px 0px;
+  padding-left: 5%;
+}
+.feePayment > form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.fp-btn {
+  padding: 10px 20px;
+  background-color: var(--navy-900);
+  color: var(--white);
+  font-family: "Roboto";
+  font-size: 0.8em;
+  border: none;
+  border-radius: 5px;
+}
+.refresh-notice {
+  font-family: "Poppins";
+  font-size: 0.7em;
+  font-weight: 550;
+  color: var(--blue-light);
+}

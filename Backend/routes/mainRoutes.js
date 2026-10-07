@@ -21,6 +21,7 @@ router.get("/filter", filterStudents);
 router.get("/search", searchStudents);
 router.post("/confirm", studentConfirmation);
 router.post("/feedback", sendFeedback);
+router.put("/payment/:id", updateFeeStatus);
 router.get("/:id", verifyToken, getStudentById);
 router.put("/:id", updateStudent);
 router.delete("/:id", deleteStudent);

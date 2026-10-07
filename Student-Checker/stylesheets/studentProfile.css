@@ -166,9 +166,27 @@
 .close-confirmation-btn:hover {
   font-size: larger;
 }
+.tuition-open {
+  position: absolute;
+  opacity: 1;
+  transition: opacity 0.4s ease-in;
+  background-color: var(--blue-muted);
+  width: 85%;
+  padding: 15px 15px;
+  border-radius: 10px;
+  align-self: center;
+  backdrop-filter: blur(10%);
+}
+.tuition-closed {
+  opacity: 0;
+  transition: opacity 1s ease-out;
+}
 
 /* Media Query */
 @media screen and (min-width: 600px) {
+  .tuition-open {
+    width: 60%;
+  }
   .info-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -206,6 +224,9 @@
   }
   .close-confirmation-btn {
     right: 14%;
+  }
+  .tuition-open {
+    width: 40%;
   }
 }
 

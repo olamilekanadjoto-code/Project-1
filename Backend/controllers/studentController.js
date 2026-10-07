@@ -2,6 +2,7 @@ const Student = require("../model/Student");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const { generateUniqueMatricNo } = require("../utils/generateMatricNo");
+const { TUITION } = require("../model/Tuition");
 
 const createStudent = async (req, res) => {
   try {
@@ -27,6 +28,13 @@ const createStudent = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const matricNo = await generateUniqueMatricNo(Student);
+    const paidFee = 0;
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const prefix = Object.keys(TUITION).find((p) => department?.startsWith(p));
+
+    const fee = TUITION[prefix];
 
     const student = new Student({
       name,
@@ -38,6 +46,8 @@ const createStudent = async (req, res) => {
       department,
       level,
       matricNo,
+      fee,
+      paidFee,
     });
     await student.save();
     console.log(matricNo);
@@ -173,6 +183,36 @@ const studentConfirmation = async (req, res) => {
   }
 };
 
+const updateFeeStatus = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { amountPaid } = req.body;
+
+    const amount = Number(String(amountPaid).replace(/,/g, ""));
+
+    if (!Number.isFinite(amount) || amount <= 0) {
+      return res.status(400).json({ message: "Invalid payment amount" });
+    }
+
+    const student = await Student.findById(id);
+
+    const newPaidFee = Math.trunc((student.paidFee ?? 0) + amount);
+
+    const updatedStudent = await Student.findByIdAndUpdate(
+      id,
+      {
+        paidFee: newPaidFee,
+      },
+      { returnDocument: true },
+    );
+
+    res.status(201).json({ message: "Payment received successfully" });
+  } catch (err) {
+    res.status(500).json({ message: "Error while paying fees" });
+    console.error(err.message);
+  }
+};
+
 const deleteStudent = async (req, res) => {
   try {
     const { id } = req.params;
@@ -191,6 +231,7 @@ module.exports = {
   getStudentById,
   updateStudent,
   searchStudents,
+  updateFeeStatus,
   deleteStudent,
   filterStudents,
   loginStudent,

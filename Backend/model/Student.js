@@ -26,6 +26,13 @@ const userSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
+  fee: {
+    type: Number,
+    default: 0,
+  },
+  paidFee: {
+    type: Number,
+  },
 });
 
 const Student = mongoose.model("Student", userSchema);

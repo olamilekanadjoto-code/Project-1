@@ -14,6 +14,7 @@ function StudentProfile() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [student, setStudent] = useState({});
+  const [showTuition, setShowTuition] = useState(false);
   const [dropDown, setDropDown] = useState(false);
   const [missingDays, setMissingDays] = useState(0);
 
@@ -132,6 +133,20 @@ function StudentProfile() {
               </svg>
               Attendance History
             </button>
+            <button className="action-btn" onClick={() => setShowTuition(true)}>
+              <svg
+                className="action-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+              Payment History
+            </button>
           </span>
         </span>
         <span className="info-grid">
@@ -167,6 +182,15 @@ function StudentProfile() {
             <h5 className="ib-header">Missing Days</h5>
             <h6 className="ib-value">{missingDays}</h6>
           </span>
+          <span className="info-box">
+            <h5 className="ib-header">Tuition Fee</h5>
+            <h6 className="ib-value">
+              {student.fee?.toLocaleString("en-NG", {
+                style: "currency",
+                currency: "NGN",
+              })}
+            </h6>
+          </span>
         </span>
         <span
           className={
@@ -181,6 +205,19 @@ function StudentProfile() {
             ❌
           </h3>
           {dropDown && <Confirmation />}
+        </span>
+        <span className={showTuition ? "tuition-open" : "tuition-closed"}>
+          <h3
+            style={{
+              opacity: showTuition ? "1" : "0",
+              zIndex: "301",
+            }}
+            className="close-confirmation-btn"
+            onClick={() => setShowTuition(false)}
+          >
+            ❌
+          </h3>
+          {showTuition && <Tuition />}
         </span>
       </div>
     </>
