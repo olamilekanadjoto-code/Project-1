@@ -30,8 +30,6 @@ const createStudent = async (req, res) => {
     const matricNo = await generateUniqueMatricNo(Student);
     const paidFee = 0;
 
-    const hashedPassword = await bcrypt.hash(password, 10);
-
     const prefix = Object.keys(TUITION).find((p) => department?.startsWith(p));
 
     const fee = TUITION[prefix];
