@@ -170,7 +170,7 @@
   position: absolute;
   opacity: 1;
   transition: opacity 0.4s ease-in;
-  background-color: var(--blue-muted);
+  background-color: rgba(15, 23, 42, 0.815);
   width: 85%;
   padding: 15px 15px;
   border-radius: 10px;

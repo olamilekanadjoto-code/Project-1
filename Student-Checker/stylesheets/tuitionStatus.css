@@ -4,6 +4,8 @@
   background-color: #fff;
   gap: 20px;
   padding-bottom: 30px;
+  box-shadow: 0 20px 48px rgba(15, 23, 42, 0.25);
+  border: solid 1px #c7d2fe;
   padding-top: 30px;
   height: min-content;
 }
@@ -16,14 +18,13 @@
 .feeStatus > h4 {
   width: fit-content;
   padding: 10px 8px;
-  background-color: var(--navy-900);
   border-radius: 8px;
   font-family: "Inter";
   font-weight: 500;
   font-size: 0.9em;
 }
 .fs-header {
-  color: var(--navy-600);
+  color: #0f172a;
   font-family: "Poppins";
   font-weight: 900;
   text-transform: uppercase;
@@ -31,12 +32,15 @@
 }
 .paid-fee {
   color: var(--sage);
+  background-color: #cbf1df;
 }
 .total-fee {
   color: var(--white);
+  background-color: var(--navy-900);
 }
 .owed-fee {
   color: var(--danger);
+  background-color: var(--danger-bg);
 }
 
 .feePayment {
