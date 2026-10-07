@@ -35,7 +35,7 @@ function Tuition() {
         } else if (Math.trunc(res.data.fee - res.data.paidFee) < 0) {
           setDisplayed(false);
         } else {
-          setDisplayed(false);
+          setDisplayed(true);
         }
       } catch (err) {
         console.error(err.message);
