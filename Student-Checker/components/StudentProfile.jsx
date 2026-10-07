@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Confirmation from "../src/ActionConfirmation";
+import Tuition from "./TuitionStatus";
 import "../stylesheets/studentProfile.css";
 import "@fontsource/cal-sans";
 import "@fontsource/dm-sans";
