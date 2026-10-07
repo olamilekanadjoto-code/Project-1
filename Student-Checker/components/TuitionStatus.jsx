@@ -19,11 +19,14 @@ function Tuition() {
     const getStudent = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get(`http://localhost:2468/students/${id}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
+        const res = await axios.get(
+          `https://project-1-j62j.onrender.com/students/${id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
           },
-        });
+        );
         setStudent(res.data);
       } catch (err) {
         console.error(err.message);
@@ -40,7 +43,7 @@ function Tuition() {
     e.preventDefault();
     try {
       const payment = await axios.put(
-        `http://localhost:2468/students/payment/${id}`,
+        `https://project-1-j62j.onrender.com/students/payment/${id}`,
         {
           amountPaid,
         },
