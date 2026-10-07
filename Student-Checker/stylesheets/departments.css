@@ -6,7 +6,7 @@ body {
   flex-direction: column;
   height: auto;
   position: relative;
-  top: 8vh;
+  margin-top: 8vh;
   gap: 4vh;
   padding-bottom: 60px;
 }

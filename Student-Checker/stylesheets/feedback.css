@@ -6,7 +6,7 @@ body {
   display: flex;
   flex-direction: column;
   position: relative;
-  top: 10vh;
+  margin-top: 10vh;
   gap: 2.5vh;
   box-sizing: border-box;
   margin-bottom: 200px;

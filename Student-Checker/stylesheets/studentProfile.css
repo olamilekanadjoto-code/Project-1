@@ -5,7 +5,7 @@
   align-content: center;
   gap: 26px;
   position: relative;
-  top: 60px;
+  margin-top: 60px;
   padding-bottom: 60px;
   box-sizing: border-box;
 }
