@@ -14,6 +14,7 @@ function Tuition() {
   const [amountPaid, setAmountPaid] = useState(Number);
   const [student, setStudent] = useState({});
   const [successMessage, setSuccessMessage] = useState(null);
+  const [displayed, setDisplayed] = useState(true);
 
   useEffect(() => {
     const getStudent = async () => {
@@ -28,14 +29,18 @@ function Tuition() {
           },
         );
         setStudent(res.data);
+
+        if (Math.trunc(res.data.fee - res.data.paidFee) === 0) {
+          setDisplayed(false);
+        } else if (Math.trunc(res.data.fee - res.data.paidFee) < 0) {
+          setDisplayed(false);
+        } else {
+          setDisplayed(false);
+        }
       } catch (err) {
         console.error(err.message);
       }
     };
-    const calculateFee = () => {
-      const owedAmount = Math.trunc(student.fee - student.paidFee);
-    };
-    calculateFee();
     getStudent();
   }, [id]);
 
@@ -45,11 +50,11 @@ function Tuition() {
       const payment = await axios.put(
         `https://project-1-j62j.onrender.com/students/payment/${id}`,
         {
-          amountPaid,
+          amountPaid: Number(amountPaid),
         },
       );
       console.log(amountPaid);
-      setSuccessMessage(payment.data);
+      setSuccessMessage("Successful");
     } catch (err) {
       console.error(err.message);
     }
@@ -86,24 +91,29 @@ function Tuition() {
             )}
           </h4>
         </span>
-        <span className="feePayment">
-          <h4 className="fp-header">Pay fees: installmentally or one-time</h4>
-          <form onSubmit={payFees}>
-            <input
-              type="number"
-              value={amountPaid}
-              onChange={(e) => setAmountPaid(e.target.value)}
-              placeholder="Enter amount"
-              className="fp-input"
-            />
-            <button type="submit" className="fp-btn">
-              Pay
-            </button>
-          </form>
-          <h3 className="refresh-notice">
-            Reload page to update payment info.
-          </h3>
-        </span>
+        {displayed ? (
+          <span className="feePayment">
+            <h4 className="fp-header">Pay fees: installmentally or one-time</h4>
+            <h5 style={{ color: "green", fontFamily: "Inter" }}>
+              {successMessage}
+            </h5>
+            <form onSubmit={payFees}>
+              <input
+                type="number"
+                value={amountPaid}
+                onChange={(e) => setAmountPaid(e.target.value)}
+                placeholder="Enter amount"
+                className="fp-input"
+              />
+              <button type="submit" className="fp-btn">
+                Pay
+              </button>
+            </form>
+            <h3 className="refresh-notice">
+              Reload page to update payment info.
+            </h3>
+          </span>
+        ) : null}
       </div>
     </>
   );
