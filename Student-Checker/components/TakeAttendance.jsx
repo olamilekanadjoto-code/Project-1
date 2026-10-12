@@ -68,7 +68,7 @@ function TakeAttendance() {
         department,
         level,
       });
-      setMessage(`Attendance saved for ${s.fullName} today`);
+      setMessage(`Attendance saved for ${s.firstName} ${s.lastName} today`);
     } catch (err) {
       console.log(err.message);
       setError("Something went wrong saving attendance");
@@ -138,7 +138,7 @@ function TakeAttendance() {
           >
             <div className="attendance-row">
               <span className="attendance-name">
-                {s.fullName}{" "}
+                {`${s.firstName} ${s.lastName}`}
                 <span className="attendance-matric">({s.matricNo})</span>
               </span>
               <span className="attendance-buttons">

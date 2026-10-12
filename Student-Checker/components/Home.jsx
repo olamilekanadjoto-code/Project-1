@@ -291,7 +291,7 @@ function Home() {
                       >
                         <div className="student">
                           <span className="student-name">
-                            <h4 className="name">{student.fullName}</h4>
+                            <h4 className="name">{`${student.firstName} ${student.lastName}`}</h4>
                           </span>
                         </div>
                       </td>

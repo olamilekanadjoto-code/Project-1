@@ -118,7 +118,7 @@ function DepartmentPage() {
             <tbody>
               {displayedStudents.map((s) => (
                 <tr key={s._id}>
-                  <td className="d-name">{student.fullName}</td>
+                  <td className="d-name">{`${s.firstName} ${s.lastName}`}</td>
                   <td className="dpt-td-email">{s.phone}</td>
                   <td className="dpt-td-compact dpt-td-capitalize">{s.age}</td>
                   <td className="dpt-td-compact">{s.level}</td>
