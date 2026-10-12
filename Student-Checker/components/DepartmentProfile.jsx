@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import LoginComponent from "../components/Login";
 import "../stylesheets/departments.css";
 import "../stylesheets/departmentPage.css";
 import "@fontsource/dm-sans";
@@ -16,6 +17,7 @@ function DepartmentPage() {
   const [openMenu, setOpenMenu] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [displayedStudents, setDisplayedStudents] = useState([]);
+  const [dropDown, setDropDown] = useState(false);
 
   useEffect(() => {
     const getDepartment = async () => {
@@ -115,15 +117,10 @@ function DepartmentPage() {
                 <th className="dpt-th-compact">Gender</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody onClick={() => setDropDown(true)}>
               {displayedStudents.map((s) => (
                 <tr key={s._id}>
-                  <td
-                    className="d-name"
-                    onClick={() => navigate(`/students/${s._id}`)}
-                  >
-                    {`${s.fullName.first} ${s.fullName.last}`}
-                  </td>
+                  <td className="d-name">{s.fullName}</td>
                   <td className="dpt-td-email">{s.phone}</td>
                   <td className="dpt-td-compact">{s.age}</td>
                   <td className="dpt-td-compact">{s.level}</td>
@@ -136,6 +133,15 @@ function DepartmentPage() {
           </table>
         </div>
       )}
+      <div className={dropDown ? "home-modal" : "home-modal-closed"}>
+        <span
+          className={dropDown ? "lc-close-btn" : "lc-close-btn-hidden"}
+          onClick={() => setDropDown(false)}
+        >
+          Close
+        </span>
+        <span>{dropDown && <LoginComponent />}</span>
+      </div>
     </div>
   );
 }

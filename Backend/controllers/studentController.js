@@ -29,7 +29,7 @@ const createStudent = async (req, res) => {
       return res.status(400).json("Password field is required");
     }
 
-    const fullName = { ...name };
+    const fullName = `${name.first} ${name.last}`;
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -180,7 +180,7 @@ const searchStudents = async (req, res) => {
     if (!name)
       return res.status(400).json({ message: "Please Provide a search term" });
     const students = await Student.find({
-      name: { $regex: name, $options: "i" },
+      fullName: { $regex: name, $options: "i" },
     });
     if (!students.length === 0) {
       console.log("No results");
