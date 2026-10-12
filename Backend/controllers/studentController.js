@@ -142,7 +142,7 @@ const updateStudent = async (req, res) => {
       if (prefix) updates.fee = TUITION[prefix];
     }
 
-    const fullName = { ...names };
+    const fullName = `${updates.firstName} ${updates.lastName}`;
 
     // Password changes only when a new one is supplied
     if (!isEmpty(passwords?.new)) {
