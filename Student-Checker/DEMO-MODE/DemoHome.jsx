@@ -279,7 +279,7 @@ function Home() {
                       <td className="t-student" style={{ width: "250px" }}>
                         <div className="student">
                           <span className="student-name">
-                            <h4 className="name">{student.name}</h4>
+                            <h4 className="name">{`${student.fullName.first} ${student.fullName.last}`}</h4>
                           </span>
                         </div>
                       </td>

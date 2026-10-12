@@ -122,7 +122,7 @@ function DepartmentPage() {
                     className="d-name"
                     onClick={() => navigate(`/students/${s._id}`)}
                   >
-                    {s.name}
+                    {`${s.fullName.first} ${s.fullName.last}`}
                   </td>
                   <td className="dpt-td-email">{s.phone}</td>
                   <td className="dpt-td-compact">{s.age}</td>

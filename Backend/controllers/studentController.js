@@ -8,9 +8,13 @@ const createStudent = async (req, res) => {
   try {
     const { name, email, phone, password, age, gender, department, level } =
       req.body;
-    if (!name) {
-      return res.status(400).json("Name field is required");
-      console.log("Name is required");
+    if (!name.first) {
+      return res.status(400).json("First name field is required");
+      console.log("First name is required");
+    }
+    if (!name.last) {
+      return res.status(400).json("Last name field is required");
+      console.log("Last name is required");
     }
     if (!email) {
       console.log("Email is required");
@@ -35,7 +39,9 @@ const createStudent = async (req, res) => {
     const fee = TUITION[prefix];
 
     const student = new Student({
-      name,
+      fullName,
+      firstName: name.first,
+      lastName: name.last,
       email,
       phone,
       password: hashedPassword,
@@ -48,7 +54,6 @@ const createStudent = async (req, res) => {
       paidFee,
     });
     await student.save();
-    console.log(matricNo);
 
     res.status(200).json("Student Profile Created");
   } catch (err) {
@@ -110,23 +115,60 @@ const loginStudent = async (req, res) => {
   }
 };
 
+const isEmpty = (v) =>
+  v === undefined ||
+  v === null ||
+  (typeof v === "string" && v.trim() === "") ||
+  (typeof v === "number" && Number.isNaN(v));
+
 const updateStudent = async (req, res) => {
   try {
     const { id } = req.params;
-    const { age, level } = req.body;
+    const { age, names, passwords, email, department, level } = req.body;
 
-    const student = await Student.findByIdAndUpdate(
-      id,
-      {
-        age,
-        level,
-      },
-      { returnDocument: "after" },
-    );
-    res.status(201).json(student);
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).json("Server error while updating student info");
+    const updates = {};
+
+    if (!isEmpty(age)) updates.age = age;
+    if (!isEmpty(names?.first)) updates.firstName = names.first.trim();
+    if (!isEmpty(names?.last)) updates.lastName = names.last.trim();
+    if (!isEmpty(email)) updates.email = email.trim();
+    if (!isEmpty(level)) updates.level = level;
+
+    if (!isEmpty(department)) {
+      updates.department = department;
+      const prefix = Object.keys(TUITION).find((p) => department.startsWith(p));
+      if (prefix) updates.fee = TUITION[prefix];
+    }
+
+    const fullName = { ...names };
+
+    // Password changes only when a new one is supplied
+    if (!isEmpty(passwords?.new)) {
+      const studentForPass = await Student.findById(id);
+      if (!studentForPass) return res.status(404).json("Student not found");
+
+      const passCompare = await bcrypt.compare(
+        passwords.current || "",
+        studentForPass.password,
+      );
+      if (!passCompare) return res.status(400).json("Incorrect Password");
+
+      updates.password = await bcrypt.hash(passwords.new, 10);
+    }
+    updates.fullName = fullName;
+
+    if (Object.keys(updates).length === 0) {
+      return res.status(400).json("Nothing to update");
+    }
+
+    const student = await Student.findByIdAndUpdate(id, updates, {
+      returnDocument: "after",
+    });
+    if (!student) return res.status(404).json("Student not found");
+
+    res.status(200).json(student);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
 };
 

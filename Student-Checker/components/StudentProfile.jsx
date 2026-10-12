@@ -60,8 +60,8 @@ function StudentProfile() {
       <div className="profile-component">
         <span className="pc-intro">
           <span className="pi-header">
-            <span className="pi-avatar">{student.name?.slice(0, 2)}</span>
-            <h1 className="pi-name">{student.name}</h1>
+            <span className="pi-avatar">{`${student.firstName?.[0]}${student.lastName?.[0]}`}</span>
+            <h1 className="pi-name">{`${student.firstName} ${student.lastName}`}</h1>
           </span>
           <h5 className="pi-dept">
             {student.department} ● {student.level} Level
@@ -153,7 +153,7 @@ function StudentProfile() {
         <span className="info-grid">
           <span className="info-box">
             <h5 className="ib-header">Name</h5>
-            <h6 className="ib-value">{student.name}</h6>
+            <h6 className="ib-value">{`${student.firstName} ${student.lastName}`}</h6>
           </span>
           <span className="info-box">
             <h5 className="ib-header">Email</h5>

@@ -8,29 +8,67 @@ import "@fontsource/poppins";
 import "@fontsource/dm-sans";
 import "@fontsource/cal-sans";
 import "@fontsource/inter";
+import { useReducer } from "react";
 
 function UpdateStudent() {
   const navigate = useNavigate();
   const { id } = useParams();
-  const [name, setName] = useState("");
+  const [names, nameDispatch] = useReducer(
+    (names, action) => {
+      switch (action.type) {
+        case "NEW_FIRST_NAME":
+          return { ...names, first: action.value };
+        case "NEW_LAST_NAME":
+          return { ...names, last: action.value };
+      }
+    },
+    {
+      first: "",
+      last: "",
+    },
+  );
+  const [passwords, passwordDispatch] = useReducer(
+    (passwords, action) => {
+      switch (action.type) {
+        case "OLD_PASSWORD":
+          return { ...passwords, current: action.value };
+        case "NEW_PASSWORD":
+          return { ...passwords, new: action.value };
+      }
+    },
+    {
+      current: "",
+      new: "",
+    },
+  );
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [age, setAge] = useState(null);
+  const [age, setAge] = useState(0);
   const [department, setDepartment] = useState("");
   const [level, setLevel] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const updateStudent = async (e) => {
     e.preventDefault();
     try {
       const token = localStorage.getItem("token");
       const decoded = jwtDecode(token);
-      if (!age || !name || !phone || !email || !level || !department.trim())
+      if (
+        !age ||
+        !phone ||
+        !passwords.current ||
+        !passwords.new ||
+        !email ||
+        !level ||
+        !department.trim()
+      )
         return window.alert("All fields are required");
       const res = await axios.put(
         `https://project-1-j62j.onrender.com/students/${id}`,
         {
           age,
-          name,
+          names,
+          passwords,
           phone,
           email,
           department,
@@ -60,14 +98,52 @@ function UpdateStudent() {
           </h3>
         </span>
         <form onSubmit={updateStudent} className="update-form">
+          <button
+            type="button"
+            style={{
+              display: showPassword ? "none" : "block",
+              padding: "10px 5px",
+              borderColor: "#0c1d3b",
+              border: "1px solid",
+            }}
+            onClick={() => setShowPassword(true)}
+          >
+            Update password
+          </button>
+          <button
+            type="button"
+            style={{
+              display: showPassword ? "inline-block" : "none",
+              padding: "10px 5px",
+              borderColor: "#0c1d3b",
+              border: "1px solid",
+            }}
+            onClick={() => setShowPassword(false)}
+          >
+            Hide password tab
+          </button>
           <span>
-            <label className="uf-label">Name :</label>
+            <label className="uf-label">First Name :</label>
             <input
               className="uf-details"
               type="text"
-              value={name}
-              placeholder="Enter new name"
-              onChange={(e) => setName(e.target.value)}
+              value={names.first}
+              placeholder="Enter new first name"
+              onChange={(e) =>
+                nameDispatch({ type: "NEW_FIRST_NAME", value: e.target.value })
+              }
+            />
+          </span>
+          <span>
+            <label className="uf-label">Last Name :</label>
+            <input
+              className="uf-details"
+              type="text"
+              value={names.last}
+              placeholder="Enter new last name"
+              onChange={(e) =>
+                nameDispatch({ type: "NEW_LAST_NAME", value: e.target.value })
+              }
             />
           </span>
           <span>
@@ -78,6 +154,36 @@ function UpdateStudent() {
               value={email}
               placeholder="Enter new email"
               onChange={(e) => setEmail(e.target.value)}
+            />
+          </span>
+          <span style={{ display: showPassword ? "inline" : "none" }}>
+            <label className="uf-label">Current Password :</label>
+            <input
+              className="uf-details"
+              type="password"
+              value={passwords.current}
+              placeholder="Enter current password"
+              onChange={(e) =>
+                passwordDispatch({
+                  type: "OLD_PASSWORD",
+                  value: e.target.value,
+                })
+              }
+            />
+          </span>
+          <span style={{ display: showPassword ? "inline" : "none" }}>
+            <label className="uf-label">New Password :</label>
+            <input
+              className="uf-details"
+              type="password"
+              value={passwords.current}
+              placeholder="Enter new password"
+              onChange={(e) =>
+                passwordDispatch({
+                  type: "NEW_PASSWORD",
+                  value: e.target.value,
+                })
+              }
             />
           </span>
           <span>

@@ -11,7 +11,20 @@ import "@fontsource/inter";
 
 function AddStudent() {
   const navigate = useNavigate();
-  const [name, setName] = useState("");
+  const [name, dispatch] = useReducer(
+    (name, action) => {
+      switch (action.type) {
+        case "FIRST_NAME":
+          return { ...name, first: action.value };
+        case "LAST_NAME":
+          return { ...name, last: action.value };
+      }
+    },
+    {
+      first: "",
+      last: "",
+    },
+  );
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [department, setDepartment] = useState("");
@@ -24,13 +37,22 @@ function AddStudent() {
   const addStudent = async (e) => {
     e.preventDefault();
     try {
-      if (!age || !name || !phone || !email || !level || !department.trim())
+      if (
+        !age ||
+        !name.first ||
+        !name.last ||
+        !phone ||
+        !email ||
+        !level ||
+        !department.trim()
+      )
         return window.alert("All fields are required");
       const res = await axios.post(
         `https://project-1-j62j.onrender.com/students/add-student`,
         { name, email, phone, password, age, gender, department, level },
       );
-      setName("");
+      name.first = "";
+      name.last = "";
       setDepartment("");
       setEmail("");
       setPhone("");
@@ -61,13 +83,27 @@ function AddStudent() {
         <form className="userForm" onSubmit={addStudent}>
           <h4 style={{ color: "red", fontFamily: "Poppins" }}>{error}</h4>
           <span>
-            <label className="label">Name :</label>
+            <label className="label">First Name :</label>
             <input
               className="ac-input"
               type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Enter your name "
+              value={name.first}
+              onChange={(e) =>
+                dispatch({ type: "FIRST_NAME", value: e.target.value })
+              }
+              placeholder="Enter first name "
+            />
+          </span>
+          <span>
+            <label className="label">Last Name :</label>
+            <input
+              className="ac-input"
+              type="text"
+              value={name.last}
+              onChange={(e) =>
+                dispatch({ type: "LAST_NAME", value: e.target.value })
+              }
+              placeholder="Enter last name "
             />
           </span>
           <span>
