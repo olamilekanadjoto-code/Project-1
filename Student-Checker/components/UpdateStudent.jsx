@@ -176,7 +176,7 @@ function UpdateStudent() {
             <input
               className="uf-details"
               type="password"
-              value={passwords.current}
+              value={passwords.new}
               placeholder="Enter new password"
               onChange={(e) =>
                 passwordDispatch({
