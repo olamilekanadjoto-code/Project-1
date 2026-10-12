@@ -29,6 +29,8 @@ const createStudent = async (req, res) => {
       return res.status(400).json("Password field is required");
     }
 
+    const fullName = { ...name };
+
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const matricNo = await generateUniqueMatricNo(Student);
