@@ -64,7 +64,7 @@ function Tuition() {
     <>
       <div className="tuition-component">
         <span className="feeStatus">
-          <h5 className="fs-header">{student.name}'s fee status</h5>
+          <h5 className="fs-header">{student.firstName}'s fee status</h5>
           <h4 className="total-fee">
             Tuition Fee:{" "}
             {student.fee?.toLocaleString("en-NG", {
