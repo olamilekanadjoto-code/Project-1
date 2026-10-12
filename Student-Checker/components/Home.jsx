@@ -43,6 +43,9 @@ function Home() {
           `https://project-1-j62j.onrender.com/students/home`,
         );
         setStudents(res.data);
+        res.data.forEach((r) => {
+          console.log(r);
+        });
       } catch (err) {
         console.error(err.message);
         setError(err.message);
