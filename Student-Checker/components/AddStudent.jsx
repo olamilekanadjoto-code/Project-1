@@ -8,6 +8,7 @@ import "@fontsource/poppins";
 import "@fontsource/dm-sans";
 import "@fontsource/cal-sans";
 import "@fontsource/inter";
+import { useReducer } from "react";
 
 function AddStudent() {
   const navigate = useNavigate();
