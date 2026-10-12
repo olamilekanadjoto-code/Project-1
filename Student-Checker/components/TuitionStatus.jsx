@@ -53,7 +53,6 @@ function Tuition() {
           amountPaid: Number(amountPaid),
         },
       );
-      console.log(amountPaid);
       setSuccessMessage("Successful");
     } catch (err) {
       console.error(err.message);
